@@ -10,7 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
-    (r'^quizzydeo/(\d{1,2})/$','quizzy_video.views.quizzy_video'),
+    (r'^quizzy_video/(\d{1,2})/$','quizzy_video.views.quizzy_video'),
     (r'^interactive_process_scheduling/(\d{1,2})/$','pro_scheduler.views.set_scheduling_question'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -23,7 +23,7 @@ if settings.DEBUG:
         # Serve static files in debug.
         urlpatterns += patterns('',
 #                (r'^quizzy_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT,'show_indexes' : True}),
-              (r'^quizzy_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root':settings.MEDIA_ROOT,'show_indexes' : True}),
+              (r'^shloka_media/(?P<path>.*)$', 'django.views.static.serve',{'document_root':settings.MEDIA_ROOT,'show_indexes' : True}),
 
 	)
 
