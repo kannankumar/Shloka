@@ -1,0 +1,121 @@
+<head>
+<!--script src="jquery-1.9.1.js"></script>
+<script src="jquery-ui.js"></script-->
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<!----------------------------------------------------->
+<script>
+
+var p1isOn=false;
+var p2isOn=false;
+var p3isOn=false;
+
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("myCanvas").onclick =function(e){
+		var x = e.pageX - $(this).offset().left; // this calculates the x coordinate where you click
+		var y = e.pageY - $(this).offset().top; // this calculates the y coordinate where you click
+		var p1={{question.process1}};
+		var p2={{question.process2}};
+		var p3={{question.process3}};
+		var process = [p1,p2,p3];
+		var process_order=[];
+
+		var technique="{{question.technique}}";
+
+		if(technique=="FCFS")
+		{
+			process_order=process;
+		}
+		if(technique=="SJF")
+		{
+			process_order = process.sort(function(a,b){return a-b});
+		}			
+		var start_x = 350;
+		var firstline = start_x +(process_order[0]*20);
+		var secondline = firstline + (process_order[1]*20);
+		var thirdline = secondline +(process_order[2]*20);
+
+		if((x>=firstline-5) && (x<=firstline+5))
+		{
+			context.moveTo(firstline, 300);
+			context.lineTo(firstline, 400);
+
+			context.fillStyle="lightblue";
+			context.fillRect(start_x,300,(firstline-start_x),100);
+
+			context.strokeStyle = "Coral";
+			context.lineWidth = 2;
+			context.stroke();
+			
+			context.font="30px Arial";
+			context.strokeText("P1",((start_x + firstline)/2),370);
+			window['p1isOn']=true;							
+		}		
+		if(((x>=secondline-5) && (x<=secondline+5)) && p1isOn)
+		{					
+			context.moveTo(secondline, 300);
+			context.lineTo(secondline, 400);
+
+			context.fillStyle="pink";
+			context.fillRect(firstline,300,(secondline-firstline),100);
+
+			context.strokeStyle = "Coral ";
+			context.lineWidth = 2;
+			context.stroke();
+
+			context.font="30px Arial";
+			context.strokeText("P2",((firstline + secondline)/2),370);
+			window['p2isOn'] =true;
+		}
+		if((x>=thirdline-5) && (x<=thirdline+5) && p1isOn && p2isOn)
+		{
+			context.moveTo(thirdline, 300);
+			context.lineTo(thirdline, 400);
+				
+			context.fillStyle="orange";
+			context.fillRect(secondline,300,(thirdline-secondline),100);
+
+			context.strokeStyle = "Coral ";
+			context.lineWidth = 2;
+			context.stroke();
+
+			context.font="30px Arial";
+			context.strokeText("P3",((secondline + thirdline)/2),370);
+			window['p3isOn'] = true;
+			alert("Correct answer!!!");
+		}
+	}
+},false);
+</script>
+</head>
+<body style="border: 2px solid orange" bgcolor="PaleGoldenRod  ">
+	<canvas id="myCanvas" height="500" width="1000"/>
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var context= canvas.getContext('2d');
+
+		var rectWidth=300;
+		var rectHeight= 150;
+
+		var correct = "this answer is correct";
+		var wrong = "this answer is wrong";
+
+		context.fillStyle="grey";
+		context.fillRect(350,300,800,100);
+
+		for(var x=350;x<=1000;x=x+20)
+		{
+			context.moveTo(x,285);
+			context.lineTo(x,300);
+			context.font="10px Arial";
+			context.strokeStyle = "black";
+			context.lineWidth = 1;
+			context.strokeText(((x-350)/20),x-5,280);			
+		}
+		context.strokeStyle = "blue";
+		context.stroke();
+
+</script>
+</body>
+</html>

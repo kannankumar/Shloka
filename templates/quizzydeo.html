@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-ui.js"></script>
+
+<!--script src="{{MEDIA_URL}}/js/jquery-1.9.1.js"></script>
+<script src="{{MEDIA_URL}}/js/jquery-ui.js"></script-->
+
+<!--script src="{{MEDIA_URL}}/js/popcorn-complete.js"></script>
+<script src="{{MEDIA_URL}}/js/popcorn-complete.min.js"></script-->
+
+<script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
+<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+
+<link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+// create a popcorn instance
+var tick = "<span id='tick'><img src='{{MEDIA_URL}}/img/tick-mark.png' width='15px' height='15px' style='padding-left:10px;'></span>";
+//var pop = Popcorn("#video");
+var pop =  Popcorn.youtube(
+	'#video',
+	'{{videourl}}' 
+	);
+
+//Questions at particular timestop
+{% for t in timestops %}
+	pop.cue({{ t.time }}, function() {
+		pop.pause();
+		$('#myModal').modal('show');
+		document.getElementById("question").innerHTML ="{{ t.question }}";
+		document.getElementById("optext1").innerHTML = "{{ t.option1 }}";
+		document.getElementById("optext2").innerHTML = "{{ t.option2 }}";
+		document.getElementById("optext3").innerHTML = "{{ t.option3 }}";
+		document.getElementById("optext4").innerHTML = "{{ t.option4 }}";
+
+		document.getElementById("opt1").value = "{{ t.option1 }}";
+		document.getElementById("opt2").value = "{{ t.option2 }}";
+		document.getElementById("opt3").value = "{{ t.option3 }}";
+		document.getElementById("opt4").value = "{{ t.option4 }}";
+		document.getElementById("answer").innerHTML ="{{ t.answer }}";
+		document.getElementById("answer").value = "{{ t.answer }}";
+	});
+{% endfor %}
+
+
+document.getElementById("butt").onclick = function() {
+	var selected_option = $('input[name=options]:checked', '#form'); //selected answer
+	var selected_option_text_id = "optext" + selected_option.attr('id')[3]; //
+	if(($("#answer").val()) == (selected_option.val()))  //correct answer
+	{ 
+		if(document.getElementById(selected_option_text_id).innerHTML)
+		{
+			document.getElementById(selected_option_text_id).innerHTML += tick;
+			$('#cont').toggle('slow');
+		}
+	}
+	else //wrong answer
+	{
+		//set color of incorrect selected option to gray
+		document.getElementById(selected_option_text_id).style.color="gray";
+	}
+}
+
+document.getElementById("rewind").onclick = function() {
+	$('#myModal').modal('hide');
+    pop.currentTime(1);
+	pop.play();
+
+
+}
+document.getElementById("cont").onclick = function() {
+			$('#myModal').modal('hide');
+			$('#cont').toggle('slow');
+			document.getElementById("question").innerHTML = "";
+			document.getElementById("optext1").innerHTML = "";
+			document.getElementById("optext2").innerHTML = "";
+			document.getElementById("optext3").innerHTML = "";
+			document.getElementById("optext4").innerHTML = "";
+			
+			//reset all option colours to black
+			document.getElementById("optext1").style.color="black";
+			document.getElementById("optext2").style.color="black";
+			document.getElementById("optext3").style.color="black";
+			document.getElementById("optext4").style.color="black";
+			pop.play();
+}
+
+}, false);
+
+</script>
+<style>
+html{font-family:arial;}
+#quiz{padding:20px;}
+.modal-body{background:rgba(0,0,255,0.2);}
+#question{font-weight:bold;}
+#video{margin:0px;padding:10px;}
+</style>
+</head>
+<body>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+
+<center>
+<div id="video" style="width: 800px; height: 560px;" ></div>
+<!--video height="560" width="800" id="video" controls--> 
+<!--source src=""</source-->
+<!--source src="{{videourl}}.mp4"</source>
+<source src="{{videourl}}.ogv"</source>
+<source src="{{videourl}}.webm"</source-->
+
+<!--source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.mp4"></source>
+<source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv"></source>
+<source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.webm"></source-->
+<!--/video-->
+</center>
+<div id="footnotediv">
+<!--MODAL STUFF GOES HERE-->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h3 id="myModalLabel">Pop Quiz(pun intended! :D)</h3>
+		</div>
+		<div class="modal-body" max-height="500px">
+			<div id="quiz" style="">
+				<p id="question"></p>
+				<form id="form">
+					<input type="radio" name="options" id="opt1" value="">&nbsp;A)&nbsp;&nbsp;<span id="optext1"></span><br/>
+					<input type="radio" name="options" id="opt2" value="">&nbsp;B)&nbsp;&nbsp;<span id="optext2"></span><br/>
+					<input type="radio" name="options" id="opt3" value="">&nbsp;C)&nbsp;&nbsp;<span id="optext3"></span><br/>
+					<input type="radio" name="options" id="opt4" value="">&nbsp;D)&nbsp;&nbsp;<span id="optext4"></span>
+				</form>
+			</div>
+			<div id="solution" style="display:none">
+				<p id="answer"></p> 
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="rewind" class="btn">Re-Watch Section</button>
+			<button id="butt" class="btn btn-primary">Submit</button>
+			<button id="cont" class="btn" data-dismiss="modal" aria-hidden="true" style="display:none;">Continue</button>
+		</div>
+    </div>
+</div>
+</body>
+</html>
