@@ -31,92 +31,207 @@ document.addEventListener("DOMContentLoaded", function () {
 		{
 			process_order = process.sort(function(a,b){return a-b});
 		}			
-		var start_x = 350;
+		var start_x = 150;
 		var firstline = start_x +(process_order[0]*20);
 		var secondline = firstline + (process_order[1]*20);
 		var thirdline = secondline +(process_order[2]*20);
 
 		if((x>=firstline-5) && (x<=firstline+5))
 		{
-			context.moveTo(firstline, 300);
-			context.lineTo(firstline, 400);
+			context.moveTo(firstline, 100);
+			context.lineTo(firstline, 200);
 
 			context.fillStyle="lightblue";
-			context.fillRect(start_x,300,(firstline-start_x),100);
+			context.fillRect(start_x,100,(firstline-start_x),100);
 
 			context.strokeStyle = "Coral";
 			context.lineWidth = 2;
 			context.stroke();
 			
 			context.font="30px Arial";
-			context.strokeText("P1",((start_x + firstline)/2),370);
+			context.strokeText("P1",((start_x + firstline)/2),170);
 			window['p1isOn']=true;							
 		}		
 		if(((x>=secondline-5) && (x<=secondline+5)) && p1isOn)
 		{					
-			context.moveTo(secondline, 300);
-			context.lineTo(secondline, 400);
+			context.moveTo(secondline, 100);
+			context.lineTo(secondline, 200);
 
 			context.fillStyle="pink";
-			context.fillRect(firstline,300,(secondline-firstline),100);
+			context.fillRect(firstline,100,(secondline-firstline),100);
 
 			context.strokeStyle = "Coral ";
 			context.lineWidth = 2;
 			context.stroke();
 
 			context.font="30px Arial";
-			context.strokeText("P2",((firstline + secondline)/2),370);
+			context.strokeText("P2",((firstline + secondline)/2),170);
 			window['p2isOn'] =true;
 		}
 		if((x>=thirdline-5) && (x<=thirdline+5) && p1isOn && p2isOn)
 		{
-			context.moveTo(thirdline, 300);
-			context.lineTo(thirdline, 400);
+			context.moveTo(thirdline, 100);
+			context.lineTo(thirdline, 200);
 				
 			context.fillStyle="orange";
-			context.fillRect(secondline,300,(thirdline-secondline),100);
+			context.fillRect(secondline,100,(thirdline-secondline),100);
 
 			context.strokeStyle = "Coral ";
 			context.lineWidth = 2;
 			context.stroke();
 
 			context.font="30px Arial";
-			context.strokeText("P3",((secondline + thirdline)/2),370);
+			context.strokeText("P3",((secondline + thirdline)/2),170);
 			window['p3isOn'] = true;
 			alert("Correct answer!!!");
 		}
 	}
 },false);
 </script>
+
+
+	<link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<title>interactive learning portal</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		html, body {height: 100%;}
+
+		#wrap {min-height: 100%;}
+
+		#main {overflow:auto;
+			padding-bottom: 150px;}  /* must be same height as the footer */
+
+		#footer {position: relative;
+			margin-top: -150px; /* negative value of footer height */
+			height: 150px;
+			clear:both;} 
+
+		/*Opera Fix*/
+		body:before {
+			content:"";
+			height:100%;
+			float:left;
+			width:0;
+			margin-top:-32767px;/
+		}
+	</style>
+	<!--[if !IE 7]>
+		<style type="text/css">
+			#wrap {display:table;height:100%}
+		</style>
+	<![endif]-->
+
+
 </head>
-<body style="border: 2px solid orange" bgcolor="PaleGoldenRod  ">
-	<canvas id="myCanvas" height="500" width="1000"></canvas>
+<body bgcolor="PaleGoldenRod  ">
+<div id="wrap">
+<div id="main">
+
+<!------------------HEADER STARTS HERE-->
+<div style="background-image:url('{{MEDIA_URL}}/img/header3.jpg');background-repeat:no-repeat;background-position:right top;">
+<ul class="thumbnails" style="padding:20px;padding-left:50px;margin-bottom:-20px;">
+  <li class="span1">
+    <a href="#" class="thumbnail">
+      <img data-src="" src="" alt="" style="width:25px;height:25px;">
+    </a>
+  </li>
+  <li>
+      <h4 style="color:white;">Interactive Learning Portal</h4>
+  </li>
+</ul>
+</div>
+
+<!------------------HEADER ENDS HERE -->
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">iLearning</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+               </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Operating System</a></li>
+              <li ><a href="#about">Digital Electronics</a></li>
+              <li><a href="#contact">Quiz</a></li>
+              <li><a href="#contact">Videos</a></li>
+              
+            </ul>
+
+
+
+		<ul class="nav nav-pills " style="float:right;">
+		  <li class="active">
+		    
+		  </li>
+		  <li>
+			  <div class="btn-group">
+			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				Account
+				<span class="caret"></span>
+			      </a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">Sign Out</a></li>
+			      <li><a href="#">Change Password</a></li>
+			      <li><a href="#">Info</a></li>
+			    </ul>
+			  </div>
+		  </li>
+		</ul>
+		
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+
+<h1 align="center" style="color:LightCoral ">P R O C E S S &nbsp;&nbsp; S C H E D U L I N G</h1>
+
+	<canvas id="myCanvas" height="350" width="1000"></canvas>
 	<script>
 		var canvas = document.getElementById("myCanvas");
 		var context= canvas.getContext('2d');
 
-		var rectWidth=300;
-		var rectHeight= 150;
+//		var rectWidth=300;
+//		var rectHeight= 150;
 
 		var correct = "this answer is correct";
 		var wrong = "this answer is wrong";
 
 		context.fillStyle="grey";
-		context.fillRect(350,300,800,100);
+		context.fillRect(150,100,1000,100);
 
-		for(var x=350;x<=1000;x=x+20)
+		for(var x=150;x<=1000;x=x+20)
 		{
-			context.moveTo(x,285);
-			context.lineTo(x,300);
+			context.moveTo(x,85);
+			context.lineTo(x,100);
 			context.font="10px Arial";
 			context.strokeStyle = "black";
 			context.lineWidth = 1;
-			context.strokeText(((x-350)/20),x-5,280);			
+			context.strokeText(((x-150)/20),x-5,80);			
 		}
 		context.strokeStyle = "blue";
 		context.stroke();
 </script>
-<div id="footer" style="border:5px solid brown;" >
+<div id="questionbox" style="border:5px solid brown;padding:20px;" >
+	<div id="tablebox">
 	<center>
 	<table border="1px solid brown">
 	<tr>
@@ -137,6 +252,28 @@ document.addEventListener("DOMContentLoaded", function () {
 	</tr>
 	</table>
 	</center>
+	</div>
+	
+	<div id="typewriter"></div>
 </div>
+<!---FOOTER-->
+
+</div>
+</div>
+<div id="footer">
+	<footer style="background:url('{{MEDIA_URL}}/img/footer3.jpg');background-size:100% 100%;background-repeat:no-repeat;">
+	<div><br><br><br><br><br><br><br><br></div>
+
+	</footer>
+</div>
+
+<!--FOOTER END ----->					
+			
+
+
+		
+
+
+
 </body>
 </html>
