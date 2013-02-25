@@ -4,7 +4,7 @@
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-<!----------------------------------------------------->
+<!---------------------------------------------------->
 <script>
 
 var p1isOn=false;
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </head>
 <body style="border: 2px solid orange" bgcolor="PaleGoldenRod  ">
-	<canvas id="myCanvas" height="500" width="1000"/>
+	<canvas id="myCanvas" height="500" width="1000"></canvas>
 	<script>
 		var canvas = document.getElementById("myCanvas");
 		var context= canvas.getContext('2d');
@@ -115,7 +115,28 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		context.strokeStyle = "blue";
 		context.stroke();
-
 </script>
+<div id="footer" style="border:5px solid brown;" >
+	<center>
+	<table border="1px solid brown">
+	<tr>
+		<td>Process</td>
+		<td>Burst Time</td>
+	</tr>
+	<tr>
+		<td>P1</td>
+		<td>{{question.process1}}</td>
+	</tr>
+	<tr>
+		<td>P2</td>
+		<td>{{question.process2}}</td>
+	</tr>
+	<tr>
+		<td>P3</td>
+		<td>{{question.process3}}</td>
+	</tr>
+	</table>
+	</center>
+</div>
 </body>
 </html>

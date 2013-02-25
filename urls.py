@@ -1,8 +1,8 @@
 from django.conf.urls.defaults import *
 from quizzy_video.views import quizzy_video
 from pro_scheduler.views import set_scheduling_question
-
 from django.conf import settings
+from shloka.views import home_page, subject_page, show_all_quiz, show_all_video
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -10,6 +10,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
+    (r'^$',home_page),
+    (r'^subject/([a-z]{1,5})/$',subject_page),
+    (r'^quiz/$',show_all_quiz),
+    (r'^video/$',show_all_video),
     (r'^quizzy_video/(\d{1,2})/$','quizzy_video.views.quizzy_video'),
     (r'^interactive_process_scheduling/(\d{1,2})/$','pro_scheduler.views.set_scheduling_question'),
 
