@@ -12,7 +12,7 @@ class quiz(models.Model):
 		return self.name;
 
 class timestop(models.Model):
-	time = models.IntegerField('Time to stop for Pop-Quiz');
+	time = models.DecimalField('Time to stop for Pop-Quiz',max_digits=5,decimal_places=2,help_text='Add time stop in mm.ss format');
         question = models.CharField('Question',max_length=500,help_text='The question to be asked at this timestop');
 	option1 = models.CharField('Option 1',max_length=300,help_text='1st option for the question at this timestop');
 	option2 = models.CharField('Option 2',max_length=300,help_text='2nd option for the question at this timestop');

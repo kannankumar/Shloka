@@ -28,7 +28,7 @@ var pop =  Popcorn.youtube(
 
 //Questions at particular timestop
 {% for t in timestops %}
-	pop.cue({{ t.time }}, function() {
+	pop.cue(({{ t.time }}*60), function() {
 		pop.pause();
 		$('#myModal').modal('show');
 		document.getElementById("question").innerHTML ="{{ t.question }}";
