@@ -1,0 +1,301 @@
+<html>
+<head>
+<!-----------------------------------------------NOT Gate LOGIC CODE Starts HERE------------------------------------------------------>
+
+	<script>
+// script for operating a toggle pushbutton switch
+var switch_off = new Image();
+switch_off.src = "{{MEDIA_URL}}/img/gates/red_button_up.gif";
+var switch_on = new Image();
+switch_on.src = "{{MEDIA_URL}}/img/gates/red_button_dn.gif";
+var switch_state = 0;
+
+
+function not_toggle(){
+//
+if (switch_state == 0 )
+{
+switch_state=1;
+document.images.red_btn.src = switch_on.src;
+}
+else
+{
+switch_state=0;
+document.images.red_btn.src = switch_off.src;
+}
+not_logic();
+//end
+}
+
+//script for NOT logic and to drive LEDs
+var gled_off = new Image();
+gled_off.src = "{{MEDIA_URL}}/img/gates/green_off.gif";
+var gled_on = new Image();
+gled_on.src = "{{MEDIA_URL}}/img/gates/green_on.gif";
+var rled_off = new Image();
+rled_off.src = "{{MEDIA_URL}}/img/gates/red_off.gif";
+var rled_on = new Image();
+rled_on.src = "{{MEDIA_URL}}/img/gates/red_on.gif";
+
+var input_a = 0;
+var output_b = 0;
+
+
+function not_logic() {
+// the NOT gate action is below
+input_a = switch_state;
+output_b = !switch_state;
+//light input LED
+if (input_a == 0 )
+{
+document.images.a_led.src = gled_off.src;
+}
+else
+{
+document.images.a_led.src = gled_on.src;
+}
+//light output LED
+if (output_b == 0 )
+{
+document.images.q_led.src = rled_off.src;
+}
+else
+{
+document.images.q_led.src = rled_on.src;
+}
+//end
+}
+
+</script>
+
+<!-- --------------------------------------------NOT GATE LOGIC CODE ENDS HERE---------------------------------------------------- -->
+
+
+
+
+
+ <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <title>iLearning:NOT Gate</title>
+	
+	<!--table style-->
+	<style>
+		.mytable
+		{
+		border-collapse:collapse; 
+		border-color:coral; 
+		border-style:solid; 
+		border-width:5px;
+		}
+
+		.mytable td
+		{
+		border-color:Bisque;
+		border-style:solid; 
+		border-width:3px;
+		}
+
+</style>	
+	
+	
+		<!--------------------------------------------footer styles-------------------------------------------------------->
+	<style>
+		html, body {height: 100%;}
+
+		#wrap {min-height: 100%;}
+
+		#main {overflow:auto;
+			padding-bottom: 150px;}  /* must be same height as the footer */
+
+		#footer {position: relative;
+			margin-top: -150px; /* negative value of footer height */
+			height: 150px;
+			clear:both;} 
+
+		/*Opera Fix*/
+		body:before {
+			content:"";
+			height:100%;
+			float:left;
+			width:0;
+			margin-top:-32767px;/
+		}
+	</style>
+	<!--[if !IE 7]>
+		<style type="text/css">
+			#wrap {display:table;height:100%}
+		</style>
+	<![endif]-->	
+
+	
+	
+</head>
+
+<body>
+<div id="wrap">
+<div id="main">
+
+
+
+
+
+<!------------------HEADER STARTS HERE-->
+
+<div style="background-image:url('{{MEDIA_URL}}/img/header3.jpg');background-repeat:no-repeat;background-position:right top;">
+<ul class="thumbnails" style="padding:20px;padding-left:50px;margin-bottom:-20px;">
+  <li class="span1">
+    <a href="#" class="thumbnail">
+      <img data-src="" src="" alt="" style="width:25px;height:25px;">
+    </a>
+  </li>
+  <li>
+      <h4 style="color:white;">Interactive Learning Portal</h4>
+  </li>
+</ul>
+</div>
+
+<!------------------HEADER ENDS HERE -->
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="navbar navbar ">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">iLearning</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+           </p>
+            <ul class="nav">
+              <li><a href="/subject/os">Operating System</a></li>
+              <li class="active"><a href="/subject/de">Digital Electronics</a></li>
+              <li><a href="/quiz">Quiz</a></li>
+              <li><a href="/video">Videos</a></li>
+              
+            </ul>
+
+
+
+		<ul class="nav nav-pills " style="float:right;">
+		  <li class="active">
+		    
+		  </li>
+		  <li>
+			  <div class="btn-group">
+			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				Account
+				<span class="caret"></span>
+			      </a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">Sign Out</a></li>
+			      <li><a href="#">Change Password</a></li>
+			      <li><a href="#">Info</a></li>
+			    </ul>
+			  </div>
+		  </li>
+		</ul>
+		
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+
+
+<h1 align="center" style="color:LightCoral ">N O T &nbsp;&nbsp; G A T E</h1>
+
+<!-- ----------------------------------------------NOT GATE DESIGN Starts HERE-------------------------------------------------- -->
+<br>
+<br>
+<div>
+<table  style="margin-left:300px;" align="left" bgcolor="#a0b9dc" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+                <tr>
+                  <td align="center" bgcolor="#7d9bbe" valign="middle" width="60"><br>
+                  </td>
+                  <td align="center" valign="middle" width="28"><b><font color="#6666cc" face="Helvetica, Arial, sans-serif">A<br>
+                  </font></b> </td>
+                  <td align="center" valign="middle" width="221"><b><font color="#6666cc" face="Helvetica, Arial, sans-serif"><br>
+                  </font></b> </td>
+                  <td align="center" valign="middle" width="28"><b><font color="#6666cc" face="Helvetica, Arial, sans-serif">Q<br>
+                  </font></b> </td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="#7d9bbe" valign="bottom" width="60"><img src="{{MEDIA_URL}}/img/gates/red_button_up.gif" alt="" name="red_btn" onclick="not_toggle();" height="39" width="44"><br>
+                  </td>
+                  <td align="center" valign="middle" width="28"><img alt="" src="{{MEDIA_URL}}/img/gates/green_off.gif" name="a_led" height="28" width="28"><br>
+                  </td>
+                  <td align="center" valign="middle" width="221"><img src="{{MEDIA_URL}}/img/gates/not.gif" alt="" height="128" width="221"></td>
+                  <td align="center" valign="middle" width="28"><img alt="" src="{{MEDIA_URL}}/img/gates/red_on.gif" name="q_led" height="28" width="28"></td>
+                </tr>
+                <tr>
+                  <td align="center" bgcolor="#7d9bbe" valign="middle" width="60"><br>
+                  </td>
+                  <td align="center" valign="middle" width="28"><br>
+                  </td>
+                  <td align="center" valign="middle" width="221"><br>
+                  </td>
+                  <td align="center" valign="middle" width="28"><br>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+<!------------------------------------------------NOT Gate Design ENDS Here---------------------------------------------------->
+
+<!------------------------------------------------NOT gate table starts-------------------------------------------------------->
+						
+				<table class="mytable" style="margin-right:300px;" border="1" align="right" bgcolor="#a0b9dc" cellpadding="16" cellspacing="10" >
+			
+					<tr>
+						<td style="color:MediumVioletRed" ><b>Input A</b></td>
+						<td style="color:MediumVioletRed"><b>Output</b></td>
+					</tr>
+					
+					<tr>
+						<td style="color:grey" align="center">0</td>
+						<td style="color:grey" align="center">1</td>
+					</tr>
+					
+					<tr>
+						<td style="color:grey" align="center">1</td>
+						<td style="color:grey" align="center">0</td>
+					</tr>
+				
+				</table>		
+						
+</div>
+						
+						
+<!-- ----------------------------------------------NOT gate table ends------------------------------------------- -->
+
+			
+<!--FOOTER-->
+
+</div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/>
+<div id="footer">
+	<footer style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;">
+	<div><br><br><br><br><br><br><br><br></div>
+
+	</footer>
+</div>
+
+<!--FOOTER END -->
+
+
+</body>
+
+</html>

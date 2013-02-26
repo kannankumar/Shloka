@@ -1,4 +1,4 @@
-<head>
+d>
 <!--script src="jquery-1.9.1.js"></script>
 <script src="jquery-ui.js"></script-->
 <title>iLearning:Pro Scheduler</title>
@@ -230,33 +230,34 @@ document.addEventListener("DOMContentLoaded", function () {
 		context.strokeStyle = "blue";
 		context.stroke();
 </script>
-<div id="questionbox" style="border:5px solid brown;padding:20px;" >
-	<div id="tablebox">
-	<center>
-	<table border="1px solid brown">
-	<tr>
-		<td>Process</td>
-		<td>Burst Time</td>
-	</tr>
-	<tr>
-		<td>P1</td>
-		<td>{{question.process1}}</td>
-	</tr>
-	<tr>
-		<td>P2</td>
-		<td>{{question.process2}}</td>
-	</tr>
-	<tr>
-		<td>P3</td>
-		<td>{{question.process3}}</td>
-	</tr>
-	</table>
-	</center>
+<div id="questionbox" style="border:5px solid coral;padding:20px;" >
+	<div id="tablebox" style="älign:left;">
+		<table style="border:3px solid blue;">
+		<tr style="color:MediumVioletRed;">
+			<td><b>Process</b></td>
+			<td><b>Burst Time</b></td>
+		</tr>
+		<tr>
+			<td style="color:darkolivegreen">P1</td>
+			<td style="color:darkolivegreen">{{question.process1}}</td>
+		</tr>
+		<tr>
+			<td style="color:darkolivegreen">P2</td>
+			<td style="color:darkolivegreen">{{question.process2}}</td>
+		</tr>
+		<tr>
+			<td style="color:darkolivegreen">P3</td>
+			<td style="color:darkolivegreen">{{question.process3}}</td>
+		</tr>
+		<tr>
+			<td style="color:darkolivegreen"> Scheduling Technique</td>
+			<td style="color:darkolivegreen"> {{question.technique}}</td>
+		</table>
 	</div>
 	
 	<div id="typewriter"></div>
 </div>
-<!---FOOTER-->
+<!--FOOTER-->
 
 </div>
 </div>
@@ -267,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	</footer>
 </div>
 
-<!--FOOTER END ----->					
+<!--FOOTER END -->					
 			
 
 

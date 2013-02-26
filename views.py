@@ -18,6 +18,45 @@ def subject_page(request,subject_code):
              'subject':subject_code
         });
         return HttpResponse(t.render(c));
+
+def and_gate(request):
+	gate ="and"
+        t = loader.get_template('and.html');
+        c = RequestContext(request,
+        {
+             'gate':gate
+        });
+        return HttpResponse(t.render(c));
+
+def or_gate(request):
+        gate ="or"
+        t = loader.get_template('or.html');
+        c = RequestContext(request,
+        {
+             'gate':gate
+        });
+        return HttpResponse(t.render(c));
+
+def not_gate(request):
+        gate ="not"
+        t = loader.get_template('not.html');
+        c = RequestContext(request,
+        {
+             'gate':gate
+        });
+        return HttpResponse(t.render(c));
+
+def xor_gate(request):
+        gate ="xor"
+        t = loader.get_template('xor.html');
+        c = RequestContext(request,
+        {
+             'gate':gate
+        });
+        return HttpResponse(t.render(c));
+
+
+
 def show_all_quiz(request):
 	username="xyz"
         t = loader.get_template('quiz.html');
@@ -35,6 +74,17 @@ def show_all_video(request):
              'username':username
         });
         return HttpResponse(t.render(c));
+
+def show_process_states(request):
+        username="xyz"
+        t = loader.get_template('interactive_process_states.html');
+        c = RequestContext(request,
+        {
+             'username':username
+        });
+        return HttpResponse(t.render(c));
+
+
 
 def hello(request):
         t = loader.get_template('quizzydeo.html');
