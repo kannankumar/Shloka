@@ -1,0 +1,968 @@
+<html>
+<head>
+
+
+
+<!--script src="jquery-1.9.1.js"></script>
+
+<script src="jquery-ui.js"></script-->
+
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+<!---------------------------------------------------------------------------------------->
+
+
+
+<script>
+<!-----------------------TYPERWRITER EFFECT WALA CODE ---------->
+
+
+
+
+var count = 0 // counter
+
+var text_array =[
+
+"As the process executes, it changes its state. Initially the process is in the NEW state. Click on NEW to move into next stage.",
+
+"The process now goes into the READY state. Here the process waits to be assigned to the processor",
+
+"After the processor has been assigned to the process, the instruction are been executed",
+
+"After the instruction are performed, if there is an INTERRUPT the process is sent back to READY state or sent in WAITING state for some event to occur.",
+
+"After the RUNNING is succesful the process is TERMINATED",
+
+]
+
+var text1=text_array[0];
+
+
+
+function type(){
+
+isrunning=1
+
+if(document.getElementById("typewriter").innerHTML)
+
+{
+
+	document.getElementById("typewriter").innerHTML=document.getElementById("typewriter").innerHTML + text1.charAt(count) // table display
+
+}
+
+else
+
+{
+
+	document.getElementById("typewriter").innerHTML =text1.charAt(count);
+
+}
+
+count++ // increment counter by 1
+
+timeID= setTimeout("type()",50) // speed
+
+
+
+if(count==text1.length){ // stop running when all characters shown
+
+clearTimeout(timeID)
+
+count=-1 // reset counter
+
+isrunning=0 // not running
+
+}
+
+
+
+}
+
+
+
+isrunning=0 // not running
+
+
+
+function restart1(){ // reset values on restart
+
+if(isrunning==1){return} // if already running then return
+
+
+
+document.getElementById("typewriter").innerHTML=""
+
+
+
+type();
+
+isrunning=1 // is running
+
+}
+
+
+
+// include onload="type()" in the opening body tag
+
+
+
+// -->
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------>
+
+
+
+
+
+var p1isOn=false;
+
+var p2isOn=false;
+
+var p3isOn=false;
+
+var p3isOn=false;
+
+var p4isOn=false;
+
+var p5isOn=false;
+
+			
+
+ document.addEventListener("DOMContentLoaded", function () {
+
+	
+
+	
+
+
+
+	
+
+	document.getElementById("myCanvas").onclick =function(e){
+
+	var x = e.pageX - $(this).offset().left; // this calculates the x coordinate where you click
+
+	var y = e.pageY - $(this).offset().top; // this calculates the y coordinate where you click
+
+	//alert(x); //this alerts the x coord
+
+	//alert(y); //this alerts the y coord
+
+
+
+		
+
+	
+
+	if((x>=252) && (x<=400) && (y>=2) && (y<=150))
+
+		{
+
+			//path
+
+			context.beginPath();
+
+			context.arc(400,150,90,-0.50*Math.PI,-1.90*Math.PI);
+
+			context.strokeStyle='DarkTurquoise';
+
+			context.lineWidth=3;
+
+			context.stroke();
+
+						
+
+			context.moveTo(485,176);
+
+			context.lineTo(475,150);
+
+			context.moveTo(487,176);
+
+			context.lineTo(510,160);			
+
+			context.stroke();
+
+				
+
+			//path-name
+
+			
+
+			//context.style='orange';
+
+			context.font="20px Arial";
+
+			context.fillText("Admitted",461,76);
+
+			
+
+			
+
+			
+
+			//text +circle
+
+			context.beginPath();
+
+			context.arc(500,250,70,0,2*Math.PI);
+
+			context.strokeStyle='DarkSalmon ';
+
+			context.lineWidth=4;
+
+			context.stroke();
+
+		
+
+			context.lineWidth=2;
+
+			context.strokeStyle='DarkCyan';
+
+			context.font="30px Arial";
+
+			context.strokeText("READY",450,265);
+
+			
+
+			
+
+			window['p1isOn']=true;	
+
+			
+
+			window['text1']= text_array[1];
+
+
+
+			restart1();
+
+			
+
+				
+
+		}
+
+		
+
+	if((x>=428) && (x<=572) && (y>=179) && (y<=321) && p1isOn)
+
+		{
+
+		//path
+
+		
+
+			context.beginPath();
+
+			context.arc(640,250,100,0.20*Math.PI,0.80*Math.PI);
+
+			context.stroke();
+
+			
+
+			
+
+				
+
+		//path-name
+
+			
+
+			//context.style='orange';
+
+			context.font="20px Arial";
+
+			context.fillText("Scheduler Dispatch",561,370);
+
+			
+
+			
+
+			
+
+			context.moveTo(721,308);
+
+			context.lineTo(700,309);
+
+			context.moveTo(720,308);
+
+			context.lineTo(725,327);
+
+			context.strokeStyle='DarkTurquoise';
+
+			context.stroke();
+
+		
+
+			
+
+			
+
+
+
+		//text + circle
+
+		
+
+			context.beginPath();
+
+			context.arc(800,250,70,0,2*Math.PI);
+
+			context.strokeStyle='DarkSalmon ';
+
+			context.lineWidth=4;
+
+			context.stroke();
+
+
+
+			
+
+			context.lineWidth=2;
+
+			context.strokeStyle='DarkCyan';
+
+			context.font="29px Arial";
+
+			context.strokeText("RUNNING",732,265);
+
+			
+
+			window['p2isOn']=true;	
+
+		
+
+			
+
+			window['text1']= text_array[2];
+
+
+
+			restart1();
+
+		}
+
+
+
+	if((x>=738) && (x<=872) && (y>=179) && (y<=321) && p1isOn && p2isOn)
+
+		{
+
+		//path
+
+		
+
+			context.beginPath();
+
+			context.arc(640,250,100,-0.80*Math.PI,-0.20*Math.PI);
+
+			context.stroke();
+
+			
+
+			
+
+			context.moveTo(560,191);
+
+			context.lineTo(590,190);
+
+			context.moveTo(560,191);
+
+			context.lineTo(560,160);
+
+			context.strokeStyle='DarkTurquoise';
+
+			context.stroke();
+
+		
+
+			
+
+		//path-name
+
+			
+
+			//context.style='orange';
+
+			context.font="20px Arial";
+
+			context.fillText("Interrupt",590,129);
+
+		
+
+		
+
+		
+
+		
+
+		//circle+text
+
+		
+
+			context.beginPath();
+
+			context.arc(800,250,70,0,2*Math.PI);
+
+			context.strokeStyle='DarkSalmon ';
+
+			context.lineWidth=4;
+
+			context.stroke();
+
+
+
+			
+
+			context.lineWidth=2;
+
+			context.strokeStyle='DarkCyan';
+
+			context.font="29px Arial";
+
+			context.strokeText("RUNNING",732,265);
+
+			
+
+			window['p3isOn']=true;
+
+			
+
+			
+
+		//bottom circle
+
+				
+
+			
+
+				context.beginPath();
+
+				context.arc(650,450,70,0,2*Math.PI);
+
+				context.strokeStyle='DarkSalmon ';
+
+				context.lineWidth=4;
+
+				context.stroke();
+
+				
+
+				
+
+				context.lineWidth=2;
+
+				context.strokeStyle='DarkCyan  ';
+
+				context.font="30px Arial";
+
+				context.strokeText("Waiting",600,460);
+
+			
+
+			
+
+				//path middle to bottom
+
+					
+
+				context.beginPath();
+
+				context.arc(700,350,90,-0.10*Math.PI,-1.6*Math.PI);
+
+				context.stroke();
+
+				
+
+				
+
+				context.moveTo(728,434);
+
+				context.lineTo(735,410);
+
+				context.moveTo(727,434);
+
+				context.lineTo(750,445);
+
+				context.stroke();
+
+				
+
+				
+
+				
+
+				//path-name
+
+			
+
+				//context.style='orange';
+
+				context.font="20px Arial";
+
+				context.fillText("I/O or Event Wait",794,384);
+
+			
+
+				
+
+				
+
+				
+
+				window['text1']= text_array[3];
+
+
+
+				restart1();
+
+		
+
+		
+
+		}
+
+	
+
+		if((x>=578) && (x<=723) && (y>=379) && (y<=521) && p1isOn && p2isOn && p3isOn)
+
+		
+
+			{
+
+				
+
+			
+
+
+
+				//bottom to left middle (top arrow)
+
+		
+
+		
+
+				context.beginPath();
+
+				context.arc(570,350,90,0.500*Math.PI,1.1*Math.PI);
+
+				context.stroke();
+
+				
+
+				
+
+				
+
+				context.moveTo(484,321);
+
+				context.lineTo(460,345);
+
+				context.moveTo(484,321);
+
+				context.lineTo(505,345);
+
+				context.stroke();
+
+					
+
+				
+
+				//path-name
+
+			
+
+				//context.style='orange';
+
+				context.font="20px Arial";
+
+				context.fillText("I/O or Event Completion",275,392);
+
+			
+
+				
+
+				
+
+				//top right circle
+
+				
+
+				context.beginPath();
+
+				context.arc(1000,75,70,0,2*Math.PI);
+
+				//context.strokeStyle='red ';
+
+				context.lineWidth=4;
+
+				context.stroke();
+
+				
+
+				window['p4isOn']=true;		
+
+				
+
+			}
+
+			
+
+		
+
+			if((x>=928) && (x<=1072) && (y>=2) && (y<=145) && p1isOn && p2isOn && p3isOn && p4isOn)
+
+			{
+
+				
+
+					
+
+					
+
+				//path middle to top right
+
+				
+
+				context.beginPath();
+
+				context.arc(900,150,90,0.90*Math.PI,1.60*Math.PI);
+
+				context.strokeStyle='BurlyWood';
+
+				context.stroke();
+
+				
+
+				
+
+				context.moveTo(927,64);
+
+				context.lineTo(905,80);
+
+				context.moveTo(927,64);
+
+				context.lineTo(905,40);
+
+				context.stroke();
+
+			
+
+				
+
+				//circle+text
+
+				
+
+				context.beginPath();
+
+				context.arc(1000,75,70,0,2*Math.PI);
+
+				context.strokeStyle='darkkhaki';
+
+				context.lineWidth=4;
+
+				context.stroke();
+
+					
+
+					
+
+				context.lineWidth=2;
+
+				context.strokeStyle='DarkCyan';
+
+				context.font="20px Arial";
+
+				context.strokeText("TERMINATED",938,85);
+
+				
+
+				
+
+				
+
+				//path-name
+
+			
+
+				//context.style='orange';
+
+				context.font="20px Arial";
+
+				context.fillText("Exit",832,116);
+
+			
+
+							
+
+				
+
+				window['text1']= text_array[4];
+
+
+
+				restart1();
+
+				alert("The process lifecycle is completed");
+
+			}
+
+
+
+
+
+
+
+
+
+	};
+
+},false);
+
+</script>
+
+ <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+      <title>iLearning:Process States</title>
+
+    	
+
+		
+
+		<!--link rel="shortcut icon" href="http://24.media.tumblr.com/avatar_05e176e12c15_16.png"-->
+
+		<!--link rel="alternate" type="application/rss+xml" href="http://www.alexbuga.is/rss"-->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      
+
+
+
+	<style>
+
+		html, body {height: 100%;}
+
+
+
+		#wrap {min-height: 100%;}
+
+
+
+		#main {overflow:auto;
+
+			padding-bottom: 150px;}  /* must be same height as the footer */
+
+
+
+		#footer {position: relative;
+
+			margin-top: -150px; /* negative value of footer height */
+
+			height: 150px;
+
+			clear:both;} 
+
+
+
+		/*Opera Fix*/
+
+		body:before {
+
+			content:"";
+
+			height:100%;
+
+			float:left;
+
+			width:0;
+
+			margin-top:-32767px;/
+
+		}
+
+	</style>
+
+	<!--[if !IE 7]->
+
+		<style type="text/css">
+
+			#wrap {display:table;height:100%}
+
+		</style>
+
+	<![endif]-->
+
+
+
+</head>
+<body style="" bgcolor="PaleGoldenRod  " onload="restart1();">
+
+<div id="wrap">
+<div id="main">
+<!------------------HEADER STARTS HERE-->
+
+<div style="background-image:url('{{MEDIA_URL}}/img/header3.jpg');background-repeat:no-repeat;background-position:right top;">
+<ul class="thumbnails" style="padding:20px;padding-left:50px;margin-bottom:-20px;">
+  <li class="span1">
+    <a href="#" class="thumbnail">
+      <img data-src="" src="" alt="" style="width:25px;height:25px;">
+    </a>
+  </li>
+  <li>
+      <h4 style="color:white;">Interactive Learning Portal</h4>
+  </li>
+</ul>
+</div>
+
+<!----------HEADER ENDS HERE -->
+<script src="http://code.jquery.com/jquery.js"></script>
+
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="navbar">
+
+      <div class="navbar-inner">
+
+        <div class="container-fluid">
+
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+          </button>
+
+          <a class="brand" href="/">iLearning</a>
+
+          <div class="nav-collapse collapse">
+
+            <p class="navbar-text pull-right">
+
+              <!--Logged in as -->
+
+              
+
+	 	
+
+              <!-- href="#" class="navbar-link">Username</a>-->
+
+               </p>
+
+            <ul class="nav">
+
+              <li class="active"><a href="/subject/os">Operating System</a></li>
+
+              <li ><a href="/subject/de">Digital Electronics</a></li>
+
+              <li><a href="/quiz">Quiz</a></li>
+
+              <li><a href="/video">Videos</a></li>
+
+              
+
+            </ul>
+
+
+
+
+
+
+
+		<ul class="nav nav-pills " style="float:right;">
+
+		  <li class="active">
+
+		    
+
+		  </li>
+
+		  <li>
+
+			  <div class="btn-group">
+
+			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+
+				Account
+
+				<span class="caret"></span>
+
+			      </a>
+
+			    <ul class="dropdown-menu">
+
+			      <li><a href="#">Sign Out</a></li>
+
+			      <li><a href="#">Change Password</a></li>
+
+			      <li><a href="#">Info</a></li>
+
+			    </ul>
+
+			  </div>
+		  </li>
+		</ul>            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+<h1 align="center" style="color:LightCoral ">P R O C E S S &nbsp;&nbsp; S T A T E S</h1>
+<canvas id="myCanvas" height="530" width="1500"></canvas>
+<script>
+	
+		var canvas = document.getElementById("myCanvas");
+		var context= canvas.getContext('2d');
+
+		//top left circle
+
+		context.beginPath();
+		context.arc(325,75,70,0,2*Math.PI);
+		context.strokeStyle='DarkSalmon  ';
+		context.lineWidth=4;
+		context.stroke();
+		context.lineWidth=2;
+		context.strokeStyle='DarkCyan ';
+		context.font="30px Arial";
+		context.strokeText("NEW",285,85);
+
+<!--------------------------------------------------------------------------------------------------------------------------------------->		
+</script>
+<div id="typewriter" style="border:3px solid coral;padding:35px;margin-bottom:-20px; color:gray; font-size:20;font-family:Arial" >
+</div>
+
+
+<!--FOOTER-->
+</div>
+</div>
+
+<div id="footer">
+	<footer style="background:url({{MEDIA_URL}}/img/footer3.jpg);
+	background-size:100% 100%;
+	background-repeat:no-repeat;">
+	<div><br><br><br><br><br><br><br><br></div>
+	</footer>
+</div>
+<!--FOOTER END ----->					
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 <head>
     <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <title>interactive learning portal</title>
+    <title>iLearning:DE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -69,7 +69,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">iLearning</a>
+          <a class="brand" href="/">iLearning</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               <!--Logged in as -->
@@ -78,10 +78,10 @@
               <!-- href="#" class="navbar-link">Username</a>-->
                </p>
             <ul class="nav">
-              <li ><a href="#">Operating System</a></li>
-              <li class="active"><a href="#about">Digital Electronics</a></li>
-              <li><a href="#contact">Quiz</a></li>
-              <li><a href="#contact">Videos</a></li>
+              <li ><a href="/subject/os">Operating System</a></li>
+              <li class="active"><a href="/subject/de">Digital Electronics</a></li>
+              <li><a href="/quiz">Quiz</a></li>
+              <li><a href="/video">Videos</a></li>
               
             </ul>
 
@@ -123,48 +123,41 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-        Chapter 1
+        Chapter 1 : Logic Gates
       </a>
     </div>
     <div id="collapseOne" class="accordion-body collapse in">
       <div class="accordion-inner">
-        <li><a href="file:///Users/saharshparekh/iLearningUI/video.html#">logic gates</a></li>
+	<p>Logic gates and their use in a logic circuit to represent a Boolean expression.AND, OR, NOT, XOR, NAND, NOR gates.</p>
+        <a href="gate/and"><li>AND gate</li></a>
+	<a href="gate/or"><li>OR gate</li></a>
+        <a href="gate/not"><li>NOT gate</li></a>
+        <a href="gate/xor"><li>XOR gate</li></a>
+        <a href="quizzy_video/"><li>Video Quiz : Logic Gates (DE-001)</li></a>
       </div>
     </div>
   </div>
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-        Chapter 2
+        Chapter 2 : Combinational Logic Circuits
       </a>
     </div>
     <div id="collapseTwo" class="accordion-body collapse in">
       <div class="accordion-inner">
-         <li><a href="file:///Users/saharshparekh/iLearningUI/video.html#">NAND and NOR</a></li>
+	<p>Half adder, Full adder, adder/subtractor, ALU, Multiplexer and demultiplexer.</p>
       </div>
     </div>
   </div>
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-        Chapter 3
+        Chapter 3 : Sequential Circuits
       </a>
     </div>
     <div id="collapseThree" class="accordion-body collapse in">
       <div class="accordion-inner">
-        chap3 details
-      </div>
-    </div>
-  </div>
-  <div class="accordion-group">
-    <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-        Chapter 4
-      </a>
-    </div>
-    <div id="collapseFour" class="accordion-body collapse">
-      <div class="accordion-inner">
-        chap4 details
+        <p>Flip-flops (SR, JK, master slave, D and T), Ripple counter, modulus of a counter, decade counter, Up/Down counter, synchronous counter and sequential generators.</p>
       </div>
     </div>
   </div>
@@ -175,7 +168,7 @@
 
 </div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br><br><br>
 <div id="footer">
 	<footer style="background:url({{MEDIA_URL}}/img/footer3.jpg);
 	background-size:100% 100%;
@@ -186,19 +179,6 @@
 </div>
 
 <!--FOOTER END-->					
-			
-
-
-
-
-
-
-
-</body>
-
-</html>
-</div>
-
 </body>
 
 </html>
