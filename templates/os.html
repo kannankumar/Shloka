@@ -1,7 +1,210 @@
 <html>
+
 <head>
+ <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <title>Interactive Learning Portal</title>
+    	
+		
+		<!--link rel="shortcut icon" href="http://24.media.tumblr.com/avatar_05e176e12c15_16.png"-->
+		<!--link rel="alternate" type="application/rss+xml" href="http://www.alexbuga.is/rss"-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	</script>
+
+	<style>
+		html, body {height: 100%;}
+
+		#wrap {min-height: 100%;}
+
+		#main {overflow:auto;
+			padding-bottom: 150px;}  /* must be same height as the footer */
+
+		#footer {position: relative;
+			margin-top: -150px; /* negative value of footer height */
+			height: 150px;
+			clear:both;} 
+
+		/*Opera Fix*/
+		body:before {
+			content:"";
+			height:100%;
+			float:left;
+			width:0;
+			margin-top:-32767px;/
+		}
+	</style>
+	<!--[if !IE 7]>
+		<style type="text/css">
+			#wrap {display:table;height:100%}
+		</style>
+	<![endif]-->
+
 </head>
+
 <body>
-	<h1> OS </h1>
+
+<div id="wrap">
+<div id="main">
+
+<!---------------HEADER STARTS HERE-->
+<div style="background-image:url('{{MEDIA_URL}}/img/header3.jpg');background-repeat:no-repeat;background-position:right top;">
+<ul class="thumbnails" style="padding:20px;padding-left:50px;margin-bottom:-20px;">
+  <li class="span1">
+    <a href="#" class="thumbnail">
+      <img data-src="" src="" alt="" style="width:25px;height:25px;">
+    </a>
+  </li>
+  <li>
+      <h4 style="color:white;">Interactive Learning Portal</h4>
+  </li>
+</ul>
+</div>
+
+<!------------------HEADER ENDS HERE -->
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">iLearning</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+               </p>
+            <ul class="nav">
+              <li class="active"><a href="#">Operating System</a></li>
+              <li ><a href="#about">Digital Electronics</a></li>
+              <li><a href="#contact">Quiz</a></li>
+              <li><a href="#contact">Videos</a></li>
+              
+            </ul>
+
+
+
+		<ul class="nav nav-pills " style="float:right;">
+		  <li class="active">
+		    
+		  </li>
+		  <li>
+			  <div class="btn-group">
+			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				Acount
+				<span class="caret"></span>
+			      </a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">Sign Out</a></li>
+			      <li><a href="#">Change Password</a></li>
+			      <li><a href="#">Info</a></li>
+			    </ul>
+			  </div>
+		  </li>
+		</ul>
+		
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+
+<h1 align="center" style="color:LightCoral ">O P E R A T I N G &nbsp;&nbsp;S Y S T E M</h1>
+
+<div class="span12">
+<div class="span4"></div>
+<div class="span7">					
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Chapter 1
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <li><a href="file:///Users/saharshparekh/iLearningUI/video.html#">logic gates</a></li>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Chapter 2
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse in">
+      <div class="accordion-inner">
+         <li><a href="file:///Users/saharshparekh/iLearningUI/video.html#">NAND and NOR</a></li>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+        Chapter 3
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        chap3 details
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+        Chapter 4
+      </a>
+    </div>
+    <div id="collapseFour" class="accordion-body collapse">
+      <div class="accordion-inner">
+        chap4 details
+      </div>
+    </div>
+  </div>
+</div>
+<div class="span1"></div>
+</div>
+<!--FOOTER-->
+
+</div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/>
+<div id="footer">
+	<footer style="background:url({{MEDIA_URL}}/img/footer3.jpg);
+	background-size:100% 100%;
+	background-repeat:no-repeat;">
+	<div><br><br><br><br><br><br><br><br></div>
+
+	</footer>
+</div>
+
+<!--FOOTER END-->					
+			
+
+
+
+
+
+
+
 </body>
+
+</html>
+</div>
+
+</body>
+
 </html>
