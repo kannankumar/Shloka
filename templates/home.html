@@ -13,11 +13,11 @@
 		#wrap {min-height: 100%;}
 
 		#main {overflow:auto;
-			padding-bottom: 150px;}  /* must be same height as the footer */
+			padding-bottom: 20px;}  /* must be same height as the footer */
 
 		#footer {position: relative;
-			margin-top: -150px; /* negative value of footer height */
-			height: 150px;
+			margin-top: -20px; /* negative value of footer height */
+			height: 20px;
 			clear:both;} 
 
 		/*Opera Fix*/
@@ -57,6 +57,7 @@
 
 <!------------------HEADER ENDS HERE -->
 <script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/js/jquery-1.9.1.js"></script>
 <script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
 
 <div class="navbar ">
@@ -109,7 +110,7 @@
     </div>
 
 
-<div id="myCarousel" class="carousel slide">
+<div id="myCarousel" class="carousel slide" style="margin-bottom:220px;">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -129,9 +130,17 @@
 
 </div>
 </div>
-<br/><br/><br/><br/><br/>
+
+<script>
+$(document).ready(function(){
+	$("#shown-footer").click(function(){
+		$('#hidden-footer').slideToggle('slow');
+		$('html,body').animate({scrollTop:$('#shown-footer').offset().top},'slow');
+	});
+});
+</script>
 <div id="footer">
-	<footer style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;">
+	<footer id="hidden-footer" style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;display:none;">
 
 <div class="media">
   <a class="pull-left" href="#">
@@ -164,9 +173,10 @@
 	
 	
 	</footer>
+        <div id="shown-footer" style="background:darkgray;" tabindex='1'><center>&nbsp; </center></div>
 </div>
 
-<!--FOOTER END ----->
+<!--FOOTER END -->
 
 
 
