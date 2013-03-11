@@ -18,6 +18,7 @@ class chapter(models.Model):
 
 class resource(models.Model):
 	name = models.CharField('Resource Name',max_length=100, help_text='Name of resource to display');
+	url = models.CharField("URL of Resource",max_length=500, help_text='As of now you have to provide relative address of HTML file/ controller address');
 	subject = models.ForeignKey(subject);
 	chapter = models.ForeignKey(chapter);
 
