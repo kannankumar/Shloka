@@ -19,6 +19,14 @@ def subject_page(request,subject_code):
         });
         return HttpResponse(t.render(c));
 
+def gate_page(request,gate):
+	t = loader.get_template(gate + '.html');
+	c = RequestContext(request,
+	{
+		'gate':gate
+	});
+	return HttpResponse(t.render(c));
+
 def and_gate(request):
 	gate ="and"
         t = loader.get_template('and.html');

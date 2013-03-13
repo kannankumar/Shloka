@@ -96,4 +96,5 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'shloka.quizzy_video',
     'shloka.pro_scheduler',
+    'shloka.subjects',
 )
