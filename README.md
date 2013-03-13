@@ -1,7 +1,7 @@
 Shloka
 ======
 
-Interactive Learning Management System (iLearningMS)
+Interactive Learning Management System (iLearningMS). Teachers can add subjects, chapters and resources for those subjects which will be shown on the portal.
 
 ##Apps:
 
