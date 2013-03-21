@@ -147,11 +147,11 @@ else
 <!--script>alert("{{chap.subject.code}} | {{thisubject.code}}");</script-->
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{chap.number}}">
         Chapter {{chap.number}}: {{chap.name}}
       </a>
     </div>
-    <div id="collapse1" class="accordion-body collapse in">
+    <div id="collapse{{chap.number}}" class="accordion-body collapse in">
       <div class="accordion-inner">
 	<p>{{chap.description}}</p>
 
