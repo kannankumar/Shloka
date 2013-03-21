@@ -104,11 +104,11 @@ document.images.q_led.src = rled_on.src;
 		#wrap {min-height: 100%;}
 
 		#main {overflow:auto;
-			padding-bottom: 150px;}  /* must be same height as the footer */
+			padding-bottom: 30px;}  /* must be same height as the footer */
 
 		#footer {position: relative;
-			margin-top: -150px; /* negative value of footer height */
-			height: 150px;
+			margin-top: -30px; /* negative value of footer height */
+			height: 30px;
 			clear:both;} 
 
 		/*Opera Fix*/
@@ -295,46 +295,82 @@ document.images.q_led.src = rled_on.src;
 
 </div>
 </div>
-<br/><br/><br/><br/><br/>
+
+
+<script>
+$(document).ready(function(){
+	$("#shown-footer").click(function(){
+		$('#hidden-footer').slideToggle('slow');
+		$('html,body').animate({scrollTop:$('#shown-footer').offset().top},'slow');
+	});
+});
+</script>
 <div id="footer">
-	<footer style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;">
+	<footer id="hidden-footer" style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;display:none;">
 
-<div class="media">
-  <a class="pull-left" href="#">
+     <div class="media">
+      <a class="pull-left" href="#">
 
-  </a>
-  <div class="media-body">
-  <br>
+      </a>
+      <div class="media-body">
+        <br>
 
-  <img  src="{{MEDIA_URL}}/img/finger.png" alt="Pulpit rock" width="150" height="150" align="left" >
-    <center><i style="color:burlywood; font-family:apple chancery ; font-size:21 ;   "   class="media-heading"><u><a style="color:burlywood;"  href="http://www.sicsr.ac.in" target="_blank">Symbiosis Institute Of Computer Studies And Research</a></u></i><br></center>
-    <br>
+        <img  src="{{MEDIA_URL}}/img/finger.png" alt="Pulpit rock" width="150" height="150" align="left" >
+        <center><i style="color:burlywood; font-family:apple chancery ; font-size:21 ;   "   class="media-heading"><u><a style="color:burlywood;"  href="http://www.sicsr.ac.in" target="_blank">Symbiosis Institute Of Computer Studies And Research</a></u></i><br></center>
+        <br>
 
-    
-    <div class="media">
-   <center> <b><a style="color:bisque;" href="http://www.facebook.com/kannanpkumar?ref=ts&fref=ts" target="_blank">Kannan Kumar</a></b><br></center>
+        
+        <div class="media">
+          <center> <b><a style="color:bisque;" href="http://www.facebook.com/kannanpkumar?ref=ts&fref=ts" target="_blank">Kannan Kumar</a></b><br></center>
 		
-	<center><b><a style="color:bisque;" href="http://www.facebook.com/dogsshout?fref=ts" target="_blank">Saharsh Parekh</a></b><br></center>
+    	    <center><b><a style="color:bisque;" href="http://www.facebook.com/dogsshout?fref=ts" target="_blank">Saharsh Parekh</a></b><br></center>
 		
-	<center><b><a style="color:bisque;" href="https://www.facebook.com/saurabh.hebbalkar?ref=ts&fref=ts" targer="_blank">Saurabh Hebbalkar</a></b></center>
-		
-
-    
-	</div>
-    
-  </div>
-</div>
+	        <center><b><a style="color:bisque;" href="https://www.facebook.com/saurabh.hebbalkar?ref=ts&fref=ts" targer="_blank">Saurabh Hebbalkar</a></b></center>
+        
+  	    </div>
+        
+      </div>
+    </div>
 
 	
 	
 	
 	
 	</footer>
+        <div id="shown-footer" class="navbar"  tabindex='1' style="padding:0px;margin-bottom:0px;">
+		      <div class="navbar-inner">	
+		      
+		              <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+            </p>
+            <ul class="nav">
+
+            <li><a> </a></li>
+              
+            </ul>
+
+		      
+		      </div>
+		      </div>
+		      
+		      
+		      
+    		  	<center>&nbsp;<span class="caret" style=""></span></center>
+    	    </div>
+      	</div>
 </div>
 
-<!--FOOTER END ----->
-
-
+<!--FOOTER END -->
+</div>
 
 
 </body>
