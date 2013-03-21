@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from quizzy_video.views import quizzy_video
 from pro_scheduler.views import set_scheduling_question
 from django.conf import settings
-from shloka.views import home_page, subject_page, show_all_quiz, show_all_video, show_process_states, gate_page 
+from shloka.views import home_page, show_all_quiz, show_all_video, show_process_states, gate_page 
 from subjects.views import subject_page
 
 # Uncomment the next two lines to enable the admin:

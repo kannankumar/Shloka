@@ -345,9 +345,17 @@ document.images.q_led.src = rled_off.src;
 
             <ul class="nav">
 
-              <li><a href="/subject/os">Operating System</a></li>
+{% for s in subject %}
+        {% ifequal s.code 'de' %}
+                <li class="active"><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% else %}
+                <li><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% endifequal %}
+{% endfor %}
 
-              <li class="active"><a href="/subject/de">Digital Electronics</a></li>
+              <!--li><a href="/subject/os">Operating System</a></li>
+
+              <li class="active"><a href="/subject/de">Digital Electronics</a></li-->
 
               <li><a href="/quiz">Quiz</a></li>
 

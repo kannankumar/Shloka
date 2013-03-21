@@ -869,10 +869,19 @@ var p5isOn=false;
                </p>
 
             <ul class="nav">
+{% for s in subject %}
+        {% ifequal s.code 'os'  %}
+                <li class="active"><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% else %}
+                <li><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% endifequal %}
+{% endfor %}
 
-              <li class="active"><a href="/subject/os">Operating System</a></li>
 
-              <li ><a href="/subject/de">Digital Electronics</a></li>
+
+              <!--li class="active"><a href="/subject/os">Operating System</a></li>
+
+              <li ><a href="/subject/de">Digital Electronics</a></li-->
 
               <li><a href="/quiz">Quiz</a></li>
 
