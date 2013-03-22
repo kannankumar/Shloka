@@ -1,12 +1,14 @@
 from django.db import models
-
+from subjects.models import subject, chapter
 # Create your models here.
 class quiz(models.Model):
 	name = models.CharField('Quiz Name',max_length=100,help_text='An identifier for internal usage',unique=True);
         text = models.CharField('Quiz Text',max_length=200,help_text='The actual name of the quiz');
 	url = models.URLField("URL of Video",help_text='The url link for the video');
 	source = models.CharField("Source of Video",max_length=40,choices =());
-	subject = models.CharField('Subject',max_length=100,choices=());
+	#subject = models.CharField('Subject',max_length=100,choices=());
+        subject = models.ForeignKey(subject);
+        chapter = models.ForeignKey(chapter);
 
 	def __unicode__(self):
 		return self.name;
