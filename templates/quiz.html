@@ -139,8 +139,8 @@
     <div id="collapse{{s.code}}" class="accordion-body collapse in">
       <div class="accordion-inner">
 	{% for q in quiz %}
-		{% ifequal s.code q.subject %} 
-		        <a href="/quizzy_video/{{q.id}}/"><li>{{q.subject.upper}} - :{{q.text}}</li></a>
+		{% ifequal s.code q.subject.code %} 
+		        <a href="/quizzy_video/{{q.id}}/"><li>{{q.subject.code.upper}} :{{q.text}}</li></a>
 		{% endifequal %}
 	{% endfor %}
       </div>

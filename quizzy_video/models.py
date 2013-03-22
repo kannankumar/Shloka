@@ -11,7 +11,7 @@ class quiz(models.Model):
         chapter = models.ForeignKey(chapter);
 
 	def __unicode__(self):
-		return self.name;
+		return u'%s   |   %s  -  %s' %(self.name, self.subject.name, self.chapter.name);
 
 class timestop(models.Model):
 	time = models.DecimalField('Time to stop for Pop-Quiz',max_digits=5,decimal_places=2,help_text='Add time stop in mm.ss format');

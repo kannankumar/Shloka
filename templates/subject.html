@@ -157,19 +157,18 @@ else
 
 	{% for res in resource %}
 		{% ifequal res.subject.code thissubject.code %}
-			{% ifequal res.chapter.number chap.number %} 
-		
-			        <!--a href="/gate/and"><li>AND gate</li></a>
-			        <a href="/gate/or"><li>OR gate</li></a>
-			        <a href="/gate/not"><li>NOT gate</li></a>
-			        <a href="/gate/xor"><li>XOR gate</li></a>
-			        <a href="/quizzy_video/1"><li>Video Quiz : Logic Gates:AND,OR,NOT (DE-001)</li></a>
-			        <a href="/quizzy_video/2"><li>Video Quiz : Logic Gates:NAND,NOR (DE-002)</li></a-->
-
+			{% ifequal res.chapter.number chap.number %}
 				<a href="{{res.url}}"><li>{{res.name}}</li></a>
 			{% endifequal %}
 		{% endifequal %}
 	{% endfor %}
+        {% for q in quiz %}
+                {% ifequal thissubject.code q.subject.code %}
+			{% ifequal chap.number q.chapter.number %}
+	                        <a href="/quizzy_video/{{q.id}}/"><li>{{q.subject.code.upper}} :{{q.text}}</li></a>
+			{% endifequal %}
+                {% endifequal %}
+        {% endfor %}
       </div>
     </div>
   </div>
