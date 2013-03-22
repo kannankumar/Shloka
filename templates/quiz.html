@@ -128,7 +128,30 @@
 <div class="span4"></div>
 <div class="span7">					
 <div class="accordion" id="accordion2">
-  <div class="accordion-group">
+
+{% for s in subject %}
+ <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{s.code}}">
+       	{{s.name}}
+      </a>
+    </div>
+    <div id="collapse{{s.code}}" class="accordion-body collapse in">
+      <div class="accordion-inner">
+	{% for q in quiz %}
+		{% ifequal s.code q.subject %} 
+		        <a href="/quizzy_video/{{q.id}}/"><li>{{q.subject.upper}} - :{{q.text}}</li></a>
+		{% endifequal %}
+	{% endfor %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+
+
+  <!--div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
        Digital Electronics
@@ -152,7 +175,7 @@
          <a href="/quizzy_video/1/"><li>OS-001 : File System</li></a>
       </div>
     </div>
-  </div>
+  </div-->
 </div>
 </div>
 <div class="span1"></div>

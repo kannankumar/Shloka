@@ -1,6 +1,7 @@
 from django.template import RequestContext, Context, loader
 from django.http import HttpResponse,HttpResponseNotFound
 from subjects.models import subject, chapter, resource
+from quizzy_video.models import quiz
 from django.shortcuts import render_to_response
 def home_page(request):
 	hello="Hello World!"
@@ -26,10 +27,12 @@ def gate_page(request,gate):
 
 def show_all_quiz(request):
         sub = subject.objects.all();
-        t = loader.get_template('quiz.html');
+        allquizzes = quiz.objects.all();
+	t = loader.get_template('quiz.html');
         c = RequestContext(request,
         {
-             'subject':sub
+             'subject':sub,
+	     'quiz':allquizzes
         });
         return HttpResponse(t.render(c));
 
