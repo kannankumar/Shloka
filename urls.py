@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 from quizzy_video.views import quizzy_video
 from pro_scheduler.views import set_scheduling_question
 from django.conf import settings
-from shloka.views import home_page, show_all_quiz, show_all_video, show_process_states, gate_page 
+from shloka.views import home_page, show_all_quiz, show_all_video, show_process_states, gate_page, show_breadboard
 from subjects.views import subject_page
 
 # Uncomment the next two lines to enable the admin:
@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     (r'^quizzy_video/(\d{1,2})/$','quizzy_video.views.quizzy_video'),
     (r'^interactive_process_scheduling/(\d{1,2})/$','pro_scheduler.views.set_scheduling_question'),
     (r'^interactive_process_states/$',show_process_states),
+    (r'^interactive_breadboard/$',show_breadboard),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),

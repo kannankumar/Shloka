@@ -1,0 +1,457 @@
+<html>
+<head>
+<!--script src="jquery-1.9.1.js"></script>
+<script src="jquery-ui.js"></script-->
+<title>iLearning:BreadBoard</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<!--------------Breadboard Code HERE-------------------------------------->
+
+
+<style type="text/css">
+#div1, #div2
+{
+width:800px;height:500px;}
+#div1{
+margin:10px;
+margin-top:0px;
+padding-left:40px;
+}
+#div2{
+margin:10px;
+padding:10px;
+float:right;
+background:url('{{MEDIA_URL}}/img/bb/bg0.png') no-repeat;
+}
+#div3
+{
+float:left;
+width:95%;
+height:50px;
+padding:20px;
+border:5px solid coral; 
+margin-left:10px;
+font-size:20px;
+font-weight:800;
+}
+.over{
+border:2px dashed #aaaaaa;
+}
+</style>
+
+
+<script>
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*-----------------TYPEWRITER EFFECT WALA CODE HERE-------------------------------------------------------------------------------*/
+<!--
+var count = 0 // counter
+var text_array =[
+"This interactive BreadBoard walks you through the process of connecting a circuit.First up drag the Battery onto the Breadboard.",
+"Now that the battery is in place. Drag the small Black Wire to the Breadboard to connect the battery to the breadboard.",
+"Next drag the long red wire to the breadboard to connect the other end of the battery",
+"Now place the Green LED light on the breadboard.",
+"We'll add a 3 Ohm resistor next. Drag it next to the LED you just placed.",
+"Now a small piece of red wire to complete the circuit. Drag the small red wire to the breadboard.",
+"Voila!! We have a working circuit now. Great job! :)"
+]
+var text1= text_array[0];
+
+function type(){
+isrunning=1
+document.getElementById("div3").innerHTML=document.getElementById("div3").innerHTML + text1.charAt(count) // table display
+
+count++ // increment counter by 1
+timeID= setTimeout("type()",50) // speed
+
+if(count==text1.length){ // stop running when all characters shown
+clearTimeout(timeID)
+count=-1 // reset counter
+isrunning=0 // not running
+}
+
+}
+
+isrunning=0 // not running
+function restart1(){ // reset values on restart
+if(isrunning==1){return} // if already running then return
+
+document.getElementById("div3").innerHTML=""
+
+type();
+isrunning=1 // is running
+}
+
+// include onload="type()" in the opening body tag
+
+// -->
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*--------------------DRAG AND DROP STUFF HERE-------------------------------------------------------------------------*/
+var items_remain =['drag6','drag5','drag4','drag3','drag2','drag1'];
+
+function allowDrop(ev)
+{
+	ev.preventDefault();
+}
+
+function drag(ev)
+{
+	ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function dragEnter(ev)
+{
+	ev.target.style.border="2px dashed blue";
+}
+function dragLeave(ev)
+{
+	ev.target.style.border="2px dashed rgba(0,0,0,0)";
+}
+function drop(ev)
+{
+	ev.preventDefault();
+	var data=ev.dataTransfer.getData("Text");
+	var drag1=eval();
+	
+	if(data=="drag1")
+	{
+		text1=text_array[1];
+		restart1();
+		items_remain.pop();
+		ev.target.appendChild(document.getElementById(data));
+		ev.target.children[0].style.visibility="hidden";
+		ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg1.png) no-repeat";
+		document.getElementById("drag2").draggable="true";
+	}
+	else if(data == "drag2")
+	{
+		if(items_remain.indexOf("drag1") > -1)
+		{
+				alert("Incorrect.I didnt ask you to move that.Please follow the assistance at the bottom");
+		}	
+		else
+		{
+			text1=text_array[2];
+			restart1();
+			items_remain.pop();
+			ev.target.appendChild(document.getElementById(data));
+			ev.target.children[1].style.visibility="hidden";
+			ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg2.png) no-repeat";
+			document.getElementById("drag3").draggable="true";
+		}
+	}
+	else if(data == "drag3")
+	{
+		if(items_remain.indexOf("drag2") > -1)
+		{
+				alert("Incorrect.I didnt ask you to move that.Please follow the assistance at the bottom");
+		}	
+		else
+		{
+			text1=text_array[3];
+			restart1();
+			items_remain.pop();
+			ev.target.appendChild(document.getElementById(data));
+			ev.target.children[2].style.visibility="hidden";
+			ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg3.png) no-repeat";
+			document.getElementById("drag4").draggable="true";
+		}
+	}
+	else if(data == "drag4")
+	{
+
+		if(items_remain.indexOf("drag3") > -1)
+		{
+				alert("Incorrect.I didnt ask you to move that.Please follow the assistance at the bottom");
+		}	
+		else
+		{
+			text1=text_array[4];
+			restart1();
+			items_remain.pop();
+			ev.target.appendChild(document.getElementById(data));
+			ev.target.children[3].style.visibility="hidden";
+			ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg4.png) no-repeat";
+			document.getElementById("drag5").draggable="true";
+
+		}
+	}
+	else if(data == "drag5")
+	{
+		if(items_remain.indexOf("drag4") > -1)
+		{
+				alert("Incorrect.I didnt ask you to move that.Please follow the assistance at the bottom");
+		}	
+		else
+		{
+			text1=text_array[5];
+			restart1();
+			items_remain.pop();
+			ev.target.appendChild(document.getElementById(data));
+			ev.target.children[4].style.visibility="hidden";
+			ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg5.png) no-repeat";
+			document.getElementById("drag6").draggable="true";
+		}
+	}
+	else if(data == "drag6")
+	{
+		if(items_remain.indexOf("drag5") > -1)
+		{
+				alert("Incorrect.I didnt ask you to move that.Please follow the assistance at the bottom");
+		}	
+		else
+		{
+			text1=text_array[6];
+			restart1();
+			items_remain.pop();
+			ev.target.appendChild(document.getElementById(data));
+			ev.target.children[5].style.visibility="hidden";
+			ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg6.png) no-repeat";
+			ev.target.style.background="url({{MEDIA_URL}}/img/bb/bg7.png) no-repeat";
+			alert("Good Job!! Your circuit is now live");
+		}
+	}
+}
+</script>
+
+<!------------------------------------------------------------------------>
+	<link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<title>interactive learning portal</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		html, body {height: 100%;}
+
+		#wrap {min-height: 100%;}
+
+		#main {overflow:auto;
+			padding-bottom: 30px;}  /* must be same height as the footer */
+
+		#footer {position: relative;
+			margin-top: -30px; /* negative value of footer height */
+			height: 30px;
+			clear:both;} 
+
+		/*Opera Fix*/
+		body:before {
+			content:"";
+			height:100%;
+			float:left;
+			width:0;
+			margin-top:-32767px;/
+		}
+	</style>
+	<!--[if !IE 7]>
+		<style type="text/css">
+			#wrap {display:table;height:100%}
+		</style>
+	<![endif]-->
+
+
+</head>
+<body style="background:url('{{MEDIA_URL}}/img/background.jpg') repeat;" onload="restart1();">
+<div id="wrap">
+<div id="main">
+
+<!------------------HEADER STARTS HERE-->
+<div style="background-image:url('{{MEDIA_URL}}/img/header3.jpg');background-repeat:no-repeat;background-position:right top;">
+<ul class="thumbnails" style="padding:20px;padding-left:50px;margin-bottom:-20px;">
+  <li class="span1">
+    <a href="#" class="thumbnail">
+      <img data-src="" src="" alt="" style="width:25px;height:25px;">
+    </a>
+  </li>
+  <li>
+      <h4 style="color:white;">Interactive Learning Portal</h4>
+  </li>
+</ul>
+</div>
+
+<!------------------HEADER ENDS HERE -->
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/js/jquery-1.9.1.js"></script>
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">iLearning</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+               </p>
+            <ul class="nav">
+{% for s in subject %}
+        {% ifequal s.code 'de' %}
+                <li class="active"><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% else %}
+                <li><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% endifequal %}
+{% endfor %}
+
+
+              <!--li class="active"><a href="/subject/os">Operating System</a></li>
+              <li ><a href="/subject/de">Digital Electronics</a></li-->
+              <li><a href="/quiz">Quiz</a></li>
+              <li><a href="/video">Videos</a></li>
+              
+            </ul>
+
+
+
+		<ul class="nav nav-pills " style="float:right;">
+		  <li class="active">
+		    
+		  </li>
+		  <li>
+			  <div class="btn-group">
+			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				Account
+				<span class="caret"></span>
+			      </a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">Sign Out</a></li>
+			      <li><a href="#">Change Password</a></li>
+			      <li><a href="#">Info</a></li>
+			    </ul>
+			  </div>
+		  </li>
+		</ul>
+		
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+
+<h1 align="center" style="color:LightCoral;text-shadow:1px 1px 1px gray;">I N T E R A C T I V E &nbsp;&nbsp; B R E A D B O A R D</h1>
+
+<div>
+	<table>
+	<tr>
+	  <td id="div1">
+		Battery<br>
+	  <img src="{{MEDIA_URL}}/img/bb/1.png" draggable="true" ondragstart="drag(event)" id="drag1" width="77" height="101"><br>
+	  Black Wire for Battery<br>
+	  <img src="{{MEDIA_URL}}/img/bb/2.png" draggable="true" ondragstart="drag(event)" id="drag2" width="62" height="15"><br>
+	  Red Wire for Battery<br>
+	  <img src="{{MEDIA_URL}}/img/bb/3.png" draggable="true" ondragstart="drag(event)" id="drag3" width="310" height="40"><br>
+	  Green LED<br>
+	  <img src="{{MEDIA_URL}}/img/bb/4.png" draggable="true" ondragstart="drag(event)" id="drag4" width="56" height="24"><br>
+	  3 Ohm Resistor<br>
+	  <img src="{{MEDIA_URL}}/img/bb/5.png" draggable="true" ondragstart="drag(event)" id="drag5" width="69" height="22"><br>
+	  Red Wire for circuit<br>
+	  <img src="{{MEDIA_URL}}/img/bb/6.png" draggable="true" ondragstart="drag(event)" id="drag6" width="89" height="12"><br>
+	</td>
+	<td id="div2" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragover="allowDrop(event)"></td>
+	</tr>
+	</table>
+</div>
+<div id="div3" >
+	
+</div>
+
+
+<!-----FOOTER----->
+
+</div>
+</div>
+
+
+
+<script>
+$(document).ready(function(){
+	$("#shown-footer").click(function(){
+		$('#hidden-footer').slideToggle('slow');
+		$('html,body').animate({scrollTop:$('#shown-footer').offset().top},'slow');
+	});
+});
+</script>
+<div id="footer">
+	<footer id="hidden-footer" style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;display:none;">
+
+     <div class="media">
+      <a class="pull-left" href="#">
+
+      </a>
+      <div class="media-body">
+        <br>
+
+        <img  src="{{MEDIA_URL}}/img/finger.png" alt="Pulpit rock" width="150" height="150" align="left" >
+        <center><i style="color:burlywood; font-family:apple chancery ; font-size:21 ;   "   class="media-heading"><u><a style="color:burlywood;"  href="http://www.sicsr.ac.in" target="_blank">Symbiosis Institute Of Computer Studies And Research</a></u></i><br></center>
+        <br>
+
+        
+        <div class="media">
+          <center> <b><a style="color:bisque;" href="http://www.facebook.com/kannanpkumar?ref=ts&fref=ts" target="_blank">Kannan Kumar</a></b><br></center>
+		
+    	    <center><b><a style="color:bisque;" href="http://www.facebook.com/dogsshout?fref=ts" target="_blank">Saharsh Parekh</a></b><br></center>
+		
+	        <center><b><a style="color:bisque;" href="https://www.facebook.com/saurabh.hebbalkar?ref=ts&fref=ts" targer="_blank">Saurabh Hebbalkar</a></b></center>
+        
+  	    </div>
+        
+      </div>
+    </div>
+
+	
+	
+	
+	
+	</footer>
+        <div id="shown-footer" class="navbar"  tabindex='1' style="padding:0px;margin-bottom:0px;">
+		      <div class="navbar-inner">	
+		      
+		              <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+            </p>
+            <ul class="nav">
+
+            <li><a> </a></li>
+              
+            </ul>
+
+		      
+		      </div>
+		      </div>
+		      
+		      
+		      
+    		  	<center>&nbsp;<span class="caret" style=""></span></center>
+    	    </div>
+      	</div>
+</div>
+
+<!--FOOTER END -->
+</div>
+
+
+		
+
+
+
+</body>
+</html>

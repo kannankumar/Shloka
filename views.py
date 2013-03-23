@@ -54,6 +54,15 @@ def show_process_states(request):
         });
         return HttpResponse(t.render(c));
 
+def show_breadboard(request):
+        sub = subject.objects.all();
+        t = loader.get_template('interactive_breadboard.html');
+        c = RequestContext(request,
+        {
+             'subject':sub
+        });
+        return HttpResponse(t.render(c));
+
 
 
 def hello(request):
