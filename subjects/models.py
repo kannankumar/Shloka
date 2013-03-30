@@ -25,4 +25,10 @@ class resource(models.Model):
 	def __unicode__(self):
 		return u'%s: %d %s' %(self.subject.code, self.chapter.number, self.name);
 
+class teacher(models.Model):
+	name =models.CharField('TEacher Name',max_length=100,help_text="Name of teacher for this subject");
+	subject = models.ForeignKey(subject);
+
+	def __unicode__(self):
+		return u'%s' %(self.name);
 # Create your models here.
