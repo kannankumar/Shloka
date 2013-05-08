@@ -1,6 +1,6 @@
 Shloka
 ======
-
+Project Page - http://kannankumar.github.io/Shloka/     
 Shloka is a Learning Management System (LMS) that aims to provide interactive learning tools and content. It is a basic bare-bones LMS where teachers can add subjects, chapters and resources for those subjects which will be shown on the portal and students can only view/interact with the content.This LMS has a few built-in interactive features/ learning tools which are listed below.
 
 ##Features:
