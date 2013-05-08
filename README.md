@@ -22,3 +22,8 @@ Shloka is a Learning Management System (LMS) that aims to provide interactive le
 
 #### 4. Interactive Breadboard
   A prototype to showcase the use of online lab practicals as a way of conducting primers for practical sessions in Digital Electronics.
+
+##Contributors:
+  Kannan Kumar(@kannanpkumar)    
+  Saurabh Hebbalkar(@saurabhebbalkar)    
+  Saharsh Parekh(@saharshparekh)    
