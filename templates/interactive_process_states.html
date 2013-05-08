@@ -143,13 +143,6 @@ var p5isOn=false;
 
  document.addEventListener("DOMContentLoaded", function () {
 
-	
-
-	
-
-
-
-	
 
 	document.getElementById("myCanvas").onclick =function(e){
 
@@ -161,11 +154,15 @@ var p5isOn=false;
 
 	//alert(y); //this alerts the y coord
 
-
+	var puprle='rgba(144,96,144,0.5)';
+	var blue='rgba(35,161,219,0.5)';
+	var green='rgba(162,186,20,0.5)';
+	var orange='rgba(240,60,2,0.5)';
+	var red='rgba(219,57,35,0.5)';
+	var gray='rgba(173,180,182,0.5)';
+	
 
 		
-
-	
 
 	if((x>=252) && (x<=400) && (y>=2) && (y<=150))
 
@@ -177,7 +174,7 @@ var p5isOn=false;
 
 			context.arc(400,150,90,-0.50*Math.PI,-1.90*Math.PI);
 
-			context.strokeStyle='DarkTurquoise';
+			context.strokeStyle=gray;
 
 			context.lineWidth=3;
 
@@ -212,24 +209,25 @@ var p5isOn=false;
 			
 
 			
-
 			//text +circle
 
 			context.beginPath();
 
 			context.arc(500,250,70,0,2*Math.PI);
+			context.fillStyle = blue;
+			context.fill();
 
-			context.strokeStyle='DarkSalmon ';
+			//context.strokeStyle='DarkSalmon ';
 
 			context.lineWidth=4;
 
-			context.stroke();
+			//context.stroke();
 
 		
 
 			context.lineWidth=2;
 
-			context.strokeStyle='DarkCyan';
+			context.strokeStyle='White';
 
 			context.font="30px Arial";
 
@@ -269,6 +267,8 @@ var p5isOn=false;
 
 			context.arc(640,250,100,0.20*Math.PI,0.80*Math.PI);
 
+			context.lineWidth=4;
+
 			context.stroke();
 
 			
@@ -301,7 +301,7 @@ var p5isOn=false;
 
 			context.lineTo(725,327);
 
-			context.strokeStyle='DarkTurquoise';
+			context.strokeStyle=gray;
 
 			context.stroke();
 
@@ -321,11 +321,15 @@ var p5isOn=false;
 
 			context.arc(800,250,70,0,2*Math.PI);
 
-			context.strokeStyle='DarkSalmon ';
+			context.fillStyle = 'rgba(162,186,20,0.5)';
+			context.fill();
+
+
+			//context.strokeStyle='DarkSalmon ';
 
 			context.lineWidth=4;
 
-			context.stroke();
+			//context.stroke();
 
 
 
@@ -333,7 +337,7 @@ var p5isOn=false;
 
 			context.lineWidth=2;
 
-			context.strokeStyle='DarkCyan';
+			context.strokeStyle='White';
 
 			context.font="29px Arial";
 
@@ -368,7 +372,8 @@ var p5isOn=false;
 			context.beginPath();
 
 			context.arc(640,250,100,-0.80*Math.PI,-0.20*Math.PI);
-
+            context.strokeStyle=gray;
+			context.lineWidth=4;
 			context.stroke();
 
 			
@@ -383,7 +388,7 @@ var p5isOn=false;
 
 			context.lineTo(560,160);
 
-			context.strokeStyle='DarkTurquoise';
+			context.strokeStyle=gray;
 
 			context.stroke();
 
@@ -416,12 +421,15 @@ var p5isOn=false;
 			context.beginPath();
 
 			context.arc(800,250,70,0,2*Math.PI);
+			context.fillStyle = 'rgba(,0.5)';
+			context.fill();
 
-			context.strokeStyle='DarkSalmon ';
+
+			//context.strokeStyle='DarkSalmon ';
 
 			context.lineWidth=4;
 
-			context.stroke();
+			//context.stroke();
 
 
 
@@ -429,7 +437,7 @@ var p5isOn=false;
 
 			context.lineWidth=2;
 
-			context.strokeStyle='DarkCyan';
+			context.strokeStyle='White';
 
 			context.font="29px Arial";
 
@@ -453,11 +461,15 @@ var p5isOn=false;
 
 				context.arc(650,450,70,0,2*Math.PI);
 
-				context.strokeStyle='DarkSalmon ';
+		    	context.fillStyle = 'rgba(253,213,54,0.5)';
+				context.fill();
+
+
+				//context.strokeStyle='DarkSalmon ';
 
 				context.lineWidth=4;
 
-				context.stroke();
+				//context.stroke();
 
 				
 
@@ -465,7 +477,7 @@ var p5isOn=false;
 
 				context.lineWidth=2;
 
-				context.strokeStyle='DarkCyan  ';
+				context.strokeStyle='white';
 
 				context.font="30px Arial";
 
@@ -483,9 +495,9 @@ var p5isOn=false;
 
 				context.arc(700,350,90,-0.10*Math.PI,-1.6*Math.PI);
 
+			    context.strokeStyle=gray;
+				context.lineWidth=4;
 				context.stroke();
-
-				
 
 				
 
@@ -605,11 +617,14 @@ var p5isOn=false;
 
 				context.arc(1000,75,70,0,2*Math.PI);
 
+				context.fillStyle = 'rgba(219,57,35,0.5)';
+				context.fill();
+
 				//context.strokeStyle='red ';
 
 				context.lineWidth=4;
 
-				context.stroke();
+				//context.stroke();
 
 				
 
@@ -671,11 +686,13 @@ var p5isOn=false;
 
 				context.arc(1000,75,70,0,2*Math.PI);
 
-				context.strokeStyle='darkkhaki';
+				context.fillStyle = 'rgba(219,57,35,0.5)';
+				context.fill();
+				//context.strokeStyle='darkkhaki';
 
 				context.lineWidth=4;
 
-				context.stroke();
+				//context.stroke();
 
 					
 
@@ -683,7 +700,7 @@ var p5isOn=false;
 
 				context.lineWidth=2;
 
-				context.strokeStyle='DarkCyan';
+				context.strokeStyle='White';
 
 				context.font="20px Arial";
 
@@ -734,18 +751,59 @@ var p5isOn=false;
 },false);
 
 </script>
+<!----TEXTBOX STYLES ----->
+<style type="text/css">
+.triangle-l {
+	border-color: transparent #7d90a3 transparent transparent;
+	border-style:solid;
+	border-width:15px;
+	height:0px;
+	width:0px;
+	position: relative;
+	left: -30px;
+	top:15px;
+	z-index: -1; /* displayed under bubble */
+	box-shadow:
+}
 
+.bubble {
+	clear: both;
+	margin: 0px auto;
+	width: 950px;
+	height:100px;
+	background: #fff;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);	
+	position: relative; 
+	z-index: 90; /* the stack order: displayed under ribbon rectangle (100) */
+}
+.rectangle {
+	background: lightblue;
+	height: 50px;
+	width: 180px;
+	position: relative;
+	left:-15px;
+	top: 0px;
+	float: left;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	z-index: 100; /* the stack order: foreground */
+}
+</style>
+<!----TEXTBOX STYLES END--->
  <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+     <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
       <title>iLearning:Process States</title>
 
-    	
-
-		
-
-		<!--link rel="shortcut icon" href="http://24.media.tumblr.com/avatar_05e176e12c15_16.png"-->
-
-		<!--link rel="alternate" type="application/rss+xml" href="http://www.alexbuga.is/rss"-->
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
@@ -946,18 +1004,29 @@ var p5isOn=false;
 
 		context.beginPath();
 		context.arc(325,75,70,0,2*Math.PI);
-		context.strokeStyle='DarkSalmon  ';
+		context.fillStyle='rgba(144,96,144,0.5)';
+		context.fill();
+		//context.strokeStyle='DarkSalmon  ';
 		context.lineWidth=4;
-		context.stroke();
+		//context.stroke();
 		context.lineWidth=2;
-		context.strokeStyle='DarkCyan ';
+		context.strokeStyle='White ';
 		context.font="30px Arial";
 		context.strokeText("NEW",285,85);
 
 <!--------------------------------------------------------------------------------------------------------------------------------------->		
 </script>
-<div id="typewriter" style="border:3px solid coral;padding:35px;margin-bottom:-20px; color:gray; font-size:20;font-family:Arial" >
+<div class="bubble" style="height:200px;">
+	<div class="triangle-l"></div>
+	<div class="rectangle">
+		<span style="position:relative;top:10px;left:40px;z-index:102;color:white;font-size:25px;font-family:Verdana;">Notes</span>
+	</div>
+	<br>
+	<div id="typewriter" style="padding:35px;margin-bottom:-20px; color:gray; font-size:20;font-family:Arial" >
+
 </div>
+<!--div id="typewriter" style="border:3px solid coral;padding:35px;margin-bottom:-20px; color:gray; font-size:20;font-family:Arial" >
+</div-->
 
 
 <!-----FOOTER----->

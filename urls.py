@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     (r'^video/$',show_all_video),
     (r'^gate/([a-z]{1,4})/$',gate_page),
     (r'^quizzy_video/(\d{1,2})/$','quizzy_video.views.quizzy_video'),
-    (r'^interactive_process_scheduling/(\d{1,2})/$','pro_scheduler.views.set_scheduling_question'),
+    (r'^process_scheduling/(\d{1,2})/$','pro_scheduler.views.set_scheduling_question'),
     (r'^interactive_process_states/$',show_process_states),
     (r'^interactive_breadboard/$',show_breadboard),
 

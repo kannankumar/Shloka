@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>iLearning:Pro Scheduler</title>
+
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <!---------------------------------------------------->
+   
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<!--script src="http://code.jquery.com/jquery-ui.js"></script-->
+	<link rel="stylesheet" href="{{MEDIA_URL}}/fonts/bebas-neue/stylesheet.css" type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="{{MEDIA_URL}}/fonts/capsuula/stylesheet.css" type="text/css" charset="utf-8">
+	<link href="{{MEDIA_URL}}/css/ribbon/style.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        var i = 0;
+        var res = 0;
+        var context = null;
+        var total_width = 1000;
+        var total_height = 100;
+        var initial_x = 0;
+        var initial_y = 100;
+        var radius = total_height/2;		
+		
+		var p1isOn=false;
+		var p2isOn=false;
+		var p3isOn=false;
+
+document.addEventListener("DOMContentLoaded", function () {
+	var elem = document.getElementById('myCanvas');
+            if (!elem || !elem.getContext) {
+                return;
+            }
+
+            context = elem.getContext('2d');
+            if (!context) {
+                return;
+            }
+
+            // set font
+//            context.font = "46px BebasNeueRegular";
+			
+			
+            // Blue gradient for progress bar
+            var progress_lingrad = context.createLinearGradient(0,initial_y+total_height,0,0);
+         /* Original blue gradient-----------------
+			progress_lingrad.addColorStop(0, '#4DA4F3');
+            progress_lingrad.addColorStop(0.4, '#ADD9FF');
+            progress_lingrad.addColorStop(1, '#9ED1FF');
+			------------------------------------------
+		*/	
+			progress_lingrad.addColorStop(0, 'rgba(219,57,35,1)');
+            progress_lingrad.addColorStop(0.4, 'rgba(219,57,35,0.7)');
+            progress_lingrad.addColorStop(1, 'rgba(219,57,35,0.9)');
+         
+			
+			
+            context.fillStyle = progress_lingrad;
+
+            //draw();
+            res = setInterval(function() { draw(0,initial_x, initial_y); }, 10);
+			
+			
+			/*Draw the numbers and text*/
+			var counter =0;
+		for(var x=initial_x;x<=1000;x=x+20,counter++)
+		{
+			var shortbar = 15;
+			var longbar = 20;
+			if(counter%2==0)
+			{
+				context.moveTo(x,initial_y+total_height);
+				context.lineTo(x,initial_y+total_height +longbar);
+			}
+			else
+			{
+				context.moveTo(x,initial_y+total_height);
+				context.lineTo(x,initial_y+total_height+shortbar);
+				context.save();			
+				context.font="12px BebasNeueRegular";
+				context.fillStyle="#222";
+				
+				context.fillText(((x-initial_x)/10),x-5,initial_y+total_height+30);
+			
+			}
+			context.strokeStyle ="#666";
+			context.lineWidth = 0.5;
+					
+		}
+		context.stroke();
+			
+
+	document.getElementById("myCanvas").onclick =function(e){
+		var x = e.pageX - $(this).offset().left; // this calculates the x coordinate where you click
+		
+		var y = e.pageY - $(this).offset().top; // this calculates the y coordinate where you click
+		var p1={{question.process1}};
+		var p2={{question.process2}};
+		var p3={{question.process3}};
+		var process = [p1,p2,p3];
+		var process_order=[];
+
+		var technique="{{question.technique}}";
+
+		if(technique=="FCFS")
+		{
+			process_order=process;
+		}
+		if(technique=="SJF")
+		{
+			process_order = process.sort(function(a,b){return a-b});
+		}			
+		
+		var firstline = initial_x +(process_order[0]*10);
+		var secondline = firstline + (process_order[1]*10);
+		var thirdline = secondline +(process_order[2]*10);
+	
+		if((x>=firstline-10) && (x<=firstline+10))
+		{
+
+            // Blue gradient for progress bar
+            var progress_lingrad = context.createLinearGradient(0,initial_y+total_height,0,0);
+            /*
+			progress_lingrad.addColorStop(0, '#4DA4F3');
+            progress_lingrad.addColorStop(0.4, '#ADD9FF');
+            progress_lingrad.addColorStop(1, '#9ED1FF');
+			*/
+			
+			
+			progress_lingrad.addColorStop(0, 'rgba(219,57,35,1)');
+            progress_lingrad.addColorStop(0.4, 'rgba(219,57,35,0.6)');
+            progress_lingrad.addColorStop(1, 'rgba(219,57,35,0.9)');
+            context.fillStyle = progress_lingrad;
+
+            //draw();
+            res = setInterval(function() { draw(firstline-initial_x,initial_x, initial_y); }, 10);
+			window['p1isOn']=true;					
+		}	
+		if(((x>=(secondline-10)) && (x<=(secondline+10))) && p1isOn)
+		{
+			// Green gradient for progress bar
+            var progress_lingrad = context.createLinearGradient(0,initial_y+total_height,0,0);
+            progress_lingrad.addColorStop(0, 'rgba(35,161,219,1)');
+            progress_lingrad.addColorStop(0.4, 'rgba(35,161,219,0.7)');
+            progress_lingrad.addColorStop(1, 'rgba(35,161,219,0.9)');
+            context.fillStyle = progress_lingrad;
+
+            //draw();
+            res = setInterval(function() { draw(secondline-firstline, firstline, initial_y); }, 10);
+			window['p2isOn']=true;							
+
+		}
+		if((x>=(thirdline-10)) && (x<=(thirdline+10)) && p1isOn && p2isOn)
+		{
+			// Red gradient for progress bar
+            var progress_lingrad = context.createLinearGradient(0,initial_y+total_height,0,0);
+            progress_lingrad.addColorStop(0, 'rgba(162,186,20,1)');
+            progress_lingrad.addColorStop(0.4, 'rgba(162,186,20,0.7)');
+            progress_lingrad.addColorStop(1, 'rgba(162,186,20,0.9)');
+            context.fillStyle = progress_lingrad;
+
+            //draw();
+            res = setInterval(function() { draw(thirdline-secondline, secondline, initial_y); }, 10);
+			window['p3isOn']=true;							
+
+            alert("Process SCheduling Complete!!");
+		}
+	}
+},false);
+		
+        function draw(limit,start_x, start_y) {
+            i+=1;
+            // Clear everything before drawing
+            context.clearRect(start_x-5,start_y-5,total_width+15,total_height+15);
+            progressLayerRect(context, start_x, start_y, total_width, total_height, radius);
+            progressBarRect(context,start_x,start_y, i, total_height, radius,total_width);
+            progressText(context,start_x, start_y, i, total_height, radius, total_width );
+            if (i>=limit) {
+                clearInterval(res);
+				i=0;
+            }
+        }
+		
+
+        /**
+         * Draws a rounded rectangle.
+         * @param {CanvasContext} ctx
+         * @param {Number} x The top left x coordinate
+         * @param {Number} y The top left y coordinate
+         * @param {Number} width The width of the rectangle
+         * @param {Number} height The height of the rectangle
+         * @param {Number} radius The corner radius;
+         */
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + width, y);
+            ctx.lineTo(x+width, y+height);
+            //ctx.arc(x+width-radius, y+radius, radius, -Math.PI/2, Math.PI/2, false);
+            ctx.lineTo(x, y + height);
+            //ctx.arc(x+radius, y+radius, radius, Math.PI/2, 3*Math.PI/2, false);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        /**
+         * Draws a rounded rectangle.
+         * @param {CanvasContext} ctx
+         * @param {Number} x The top left x coordinate
+         * @param {Number} y The top left y coordinate
+         * @param {Number} width The width of the rectangle
+         * @param {Number} height The height of the rectangle
+         * @param {Number} radius The corner radius;
+         */
+        function roundInsetRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            // Draw huge anti-clockwise box
+            ctx.moveTo(1000, 1000);
+            ctx.lineTo(1000, -1000);
+            ctx.lineTo(-1000, -1000);
+            ctx.lineTo(-1000, 1000);
+            ctx.lineTo(1000, 1000);
+          
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + width, y);
+            ctx.lineTo(x + width, y + height);
+          //ctx.arc(x+width-radius, y+radius, radius, -Math.PI/2, Math.PI/2, false);
+            ctx.lineTo(x, y + height);
+          //ctx.arc(x+radius, y+radius, radius, Math.PI/2, 3*Math.PI/2, false);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function progressLayerRect(ctx, x, y, width, height, radius) {
+            ctx.save();
+            // Set shadows to make some depth
+            ctx.shadowOffsetX = 2;
+            ctx.shadowOffsetY = 2;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = '#666';
+
+             // Create initial grey layer
+            ctx.fillStyle = 'rgba(189,189,189,1)';
+            roundRect(ctx, x, y, width, height, radius);
+
+            // Overlay with gradient
+            ctx.shadowColor = 'rgba(0,0,0,0)'
+            var lingrad = ctx.createLinearGradient(0,y+height,0,0);
+            lingrad.addColorStop(0, 'rgba(255,255,255, 0.1)');
+            lingrad.addColorStop(0.4, 'rgba(255,255,255, 0.7)');
+            lingrad.addColorStop(1, 'rgba(255,255,255,0.4)');
+            ctx.fillStyle = lingrad;
+            roundRect(ctx, x, y, width, height, radius);
+
+            ctx.fillStyle = 'white';
+            //roundInsetRect(ctx, x, y, width, height, radius);
+
+            ctx.restore();
+        }
+
+        /**
+         * Draws a half-rounded progress bar to properly fill rounded under-layer
+         * @param {CanvasContext} ctx
+         * @param {Number} x The top left x coordinate
+         * @param {Number} y The top left y coordinate
+         * @param {Number} width The width of the bar
+         * @param {Number} height The height of the bar
+         * @param {Number} radius The corner radius;
+         * @param {Number} max The under-layer total width;
+         */
+        function progressBarRect(ctx, x, y, width, height, radius, max) {
+            // var to store offset for proper filling when inside rounded area
+            var offset = 0;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + width, y);
+            ctx.lineTo(x + width, y + height);
+            ctx.lineTo(x, y + height);
+			ctx.lineTo(x, y);
+            ctx.closePath();
+            ctx.fill();
+
+            // draw progress bar right border shadow
+            if (width<max-1) {
+                ctx.save();
+                ctx.shadowOffsetX = 1;
+                ctx.shadowBlur = 1;
+                ctx.shadowColor = '#666';
+                if (width+radius>max)
+                  offset = offset+1;
+                ctx.fillRect(x+width,y+offset,1,total_height-offset*2);
+                ctx.restore();
+            }
+        }
+
+        /**
+         * Draws properly-positioned progress bar percent text
+         * @param {CanvasContext} ctx
+         * @param {Number} x The top left x coordinate
+         * @param {Number} y The top left y coordinate
+         * @param {Number} width The width of the bar
+         * @param {Number} height The height of the bar
+         * @param {Number} radius The corner radius;
+         * @param {Number} max The under-layer total width;
+         */
+        function progressText(ctx, x, y, width, height, radius, max) {
+            ctx.save();
+			ctx.font = "46px BebasNeueRegular";
+            ctx.fillStyle = 'white';
+            var text = Math.floor(width/max*100) +"";
+            var text_width = ctx.measureText(text).width;
+            var text_x = x+width-text_width-height/2;
+            if (width<=radius+text_width) {
+                text_x = x+height/2;
+            }
+            ctx.fillText(text, text_x, y+(height/2)+15);
+            ctx.restore();
+        }
+    </script>
+
+	<style>
+	td{
+		padding:5px;
+		text-align:center;
+	}
+	</style>
+	
+    <link href="{{MEDIA_URL}}/introjs/introjs.min.css" rel="stylesheet">
+    <link href="{{MEDIA_URL}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		html, body {height: 100%;}
+
+		#wrap {min-height: 100%;}
+
+		#main {overflow:auto;
+			padding-bottom: 30px;}  /* must be same height as the footer */
+
+		#footer {position: relative;
+			margin-top: -30px; /* negative value of footer height */
+			height: 30px;
+			clear:both;} 
+
+		/*Opera Fix*/
+		body:before {
+			content:"";
+			height:100%;
+			float:left;
+			width:0;
+			margin-top:-32767px;/
+		}
+	</style>
+	<!--[if !IE 7]>
+		<style type="text/css">
+			#wrap {display:table;height:100%}
+		</style>
+	<![endif]-->
+
+
+
+</head>
+<body onload="javascript:introJs().start();" style="background:url('{{MEDIA_URL}}/img/background.jpg') repeat;">
+<div id="wrap">
+<div id="main">
+
+<!------------------HEADER STARTS HERE-->
+<div style="background-image:url('{{MEDIA_URL}}/img/header3.jpg');background-repeat:no-repeat;background-position:right top;">
+<ul class="thumbnails" style="padding:20px;padding-left:50px;margin-bottom:-20px;">
+  <li class="span1">
+    <a href="#" class="thumbnail">
+      <img data-src="" src="{{MEDIA_URL}}/img/i.jpeg" alt="logo"  style="width:25px;height:25px;">
+    </a>
+  </li>
+  <li>
+      <h4 style="color:white;">Interactive Learning Portal</h4>
+  </li>
+</ul>
+</div>
+
+<!------------------HEADER ENDS HERE -->
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="{{MEDIA_URL}}/js/jquery-1.9.1.js"></script>
+<script src="{{MEDIA_URL}}/bootstrap/js/bootstrap.min.js"></script>
+
+<div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">iLearning</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+               </p>
+            <ul class="nav">
+{% for s in subject %}
+        {% ifequal s.code 'os' %}
+                <li class="active"><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% else %}
+                <li><a href="/subject/{{s.code}}">{{s.name}}</a></li>
+        {% endifequal %}
+{% endfor %}
+
+
+              <!--li class="active"><a href="/subject/os">Operating System</a></li>
+              <li ><a href="/subject/de">Digital Electronics</a></li-->
+              <li><a href="/quiz">Quiz</a></li>
+              <li><a href="/video">Videos</a></li>
+              
+            </ul>
+
+
+
+		<ul class="nav nav-pills " style="float:right;">
+		  <li class="active">
+		    
+		  </li>
+		  <li>
+			  <div class="btn-group">
+			    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				Account
+				<span class="caret"></span>
+			      </a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">Sign Out</a></li>
+			      <li><a href="#">Change Password</a></li>
+			      <li><a href="#">Info</a></li>
+			    </ul>
+			  </div>
+		  </li>
+		</ul>
+		
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+
+
+<h1 align="center" style="color:LightCoral;text-shadow:1px 1px 1px gray;">P R O C E S S &nbsp;&nbsp; S C H E D U L I N G</h1>
+
+    <!--div data-step="1" data-intro="Hello, Welcome to the Interactive Gantt Chart Exercise! :). You select the sequence in which the process will execute by clicking on the Gantt Chart at the appropiate time based on the scheduling technique given."-->
+		<div data-step="3" data-intro=" The Ruler below the Gantt Chart shows the time.Click on the appropiate location for the processes."> 
+			<div data-step="6" data-intro="Do not forget to take into account the Scheduling technique while selecting the location on the Gantt Chart for the processes.">
+			<center>
+				
+				<canvas id="myCanvas" width="810" height="250"  data-step="1" data-intro="Hello, Welcome to the Interactive Gantt Chart Exercise! :). You select the sequence in which the process will execute by clicking on the Gantt Chart at the appropiate time based on the scheduling technique given.">Your browser does not have support for canvas.</canvas>
+			</center>
+			</div>
+		</div>
+	<!--/div-->
+    
+	<center>
+	
+	
+<div id="container">
+
+	<div class="bubble" data-step="2" data-intro="This is the question.with all Process and their Burst times.Based on this data you have to click at the appropiate time on the Gantt Chart">
+		<div class="rectangle"><h2 style="position:relative;top:-10px;font:38px 'BebasNeueRegular', Arial, sans-serif;letter-spacing:1px;">Question</h2></div>
+		<div class="triangle-l"></div>
+		<div class="triangle-r"></div>
+		<div class="info" >
+			<!--h2>First Come First Serve</h2-->
+			
+			<!--background:rgba(237,161,183,0.9);-->
+			<table style="font:18px 'BebasNeueRegular', Arial, sans-serif;letter-spacing:1px;">
+				
+				<tr style="font:28px 'BebasNeueRegular', Arial, sans-serif;letter-spacing:1px;color:lightgray">
+					<th><u>Process</u></th>
+					<th><u>Burst Time</u></th>
+				</tr>
+				<tr >
+					<td data-step="4" data-intro="This is Process P1.Since the technique here is FCFS, P1 will be executed first as it came first.">P1</td>
+					<td data-step="5" data-intro="P1 takes 20 units of time to complete.So clicking on Gantt Chart in the position pointed to by the 20 on the ruler will queue P1 in the Gantt Chart.Try It">{{question.process1}}</td>
+				</tr>
+				<tr>
+					<td>P2</td>
+					<td>{{question.process2}}</td>
+				</tr>
+				<tr>
+					<td>P3</td>
+					<td>{{question.process3}}</td>
+				</tr>
+				<tr>
+					<td>Technique</td>
+					<td>{{question.technique}}</td>
+				</tr>
+			</table>
+							
+		</div>
+	</div>
+
+</div>
+
+	
+	
+	</center>
+<br/>
+
+
+<!-----FOOTER----->
+
+</div>
+</div>
+
+
+
+<script>
+$(document).ready(function(){
+	$("#shown-footer").click(function(){
+		$('#hidden-footer').slideToggle('slow');
+		$('html,body').animate({scrollTop:$('#shown-footer').offset().top},'slow');
+	});
+});
+</script>
+<div id="footer">
+	<footer id="hidden-footer" style="background:url({{MEDIA_URL}}/img/footer3.jpg);background-size:100% 100%;background-repeat:no-repeat;display:none;">
+
+     <div class="media">
+      <a class="pull-left" href="#">
+
+      </a>
+      <div class="media-body">
+        <br>
+
+        <img  src="{{MEDIA_URL}}/img/finger.png" alt="Pulpit rock" width="150" height="150" align="left" >
+        <center><i style="color:burlywood; font-family:apple chancery ; font-size:21 ;   "   class="media-heading"><u><a style="color:burlywood;"  href="http://www.sicsr.ac.in" target="_blank">Symbiosis Institute Of Computer Studies And Research</a></u></i><br></center>
+        <br>
+
+        
+        <div class="media">
+          <center> <b><a style="color:bisque;" href="http://www.facebook.com/kannanpkumar?ref=ts&fref=ts" target="_blank">Kannan Kumar</a></b><br></center>
+		
+    	    <center><b><a style="color:bisque;" href="http://www.facebook.com/dogsshout?fref=ts" target="_blank">Saharsh Parekh</a></b><br></center>
+		
+	        <center><b><a style="color:bisque;" href="https://www.facebook.com/saurabh.hebbalkar?ref=ts&fref=ts" targer="_blank">Saurabh Hebbalkar</a></b></center>
+        
+  	    </div>
+        
+      </div>
+    </div>
+
+	
+	
+	
+	
+	</footer>
+        <div id="shown-footer" class="navbar"  tabindex='1' style="padding:0px;margin-bottom:0px;">
+		      <div class="navbar-inner">	
+		      
+		              <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+              <!--Logged in as -->
+              
+	 	
+              <!-- href="#" class="navbar-link">Username</a>-->
+            </p>
+            <ul class="nav">
+
+            <li><a> </a></li>
+              
+            </ul>
+
+		      
+		      </div>
+		      </div>
+		      
+		      
+		      
+    		  	<center>&nbsp;<span class="caret" style=""></span></center>
+    	    </div>
+      	</div>
+</div>
+
+<!--FOOTER END -->
+</div>
+
+
+    <script type="text/javascript" src="{{MEDIA_URL}}/introjs/intro.min.js"></script>
+
+</body></html>
