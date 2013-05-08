@@ -7,6 +7,7 @@ Shloka is a Learning Management System (LMS) that aims to provide interactive le
 
 #### 1. Quizzy-Video
   This app is designed to make video content less monotonous and more interactive with the help of pop-quizzes at predefined times during the video playback.The teachers provide a video link(supports youtube/vimeo), set the questions and when to show them and students get an interactive answer-as-you-watch experience.We call this the Quizzy-video.
+  ![Before Answer](media/screenshots/quizzy-video-before-answer-ds.png?raw=true)
 
 #### 2. Pro-Scheduler
   Pro-Scheduler was designed as a proof-of-concept app to showcase the use of interactive online exercises for students(with the help of Web 2.0 technologies) to aid learning.This specific app is aimed at allowing students to solve (Operating Systems concept of)process scheduling exercices interactively(currently supports addition of FCFS and SJF techniques).
