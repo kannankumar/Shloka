@@ -12,7 +12,7 @@ Shloka is a Learning Management System (LMS) that aims to provide interactive le
   Pro-Scheduler was designed as a proof-of-concept app to showcase the use of interactive online exercises for students(with the help of Web 2.0 technologies) to aid learning.This specific app is aimed at allowing students to solve (Operating Systems concept of)process scheduling exercices interactively(currently supports addition of FCFS and SJF techniques).
   ![Pro-Scheduler App](media/screenshots/pro-scheduler-full.png?raw=true)
   The app has an introductory walkthrough to explain the app interface and the goals of the exercise to the students:
-  ![Pro-Scheduler Walkthrough](media/screenshots/pro-scheduler-walkthrough1.png?raw=true)
+  ![Pro-Scheduler Walkthrough](media/screenshots/pro-scheduler-%20walkthrough1.png?raw=true)
   ![Pro-Scheduler Walkthrough](media/screenshots/pro-scheduler-walkthrough2.png?raw=true)
   
 #### 3. i-Walkthru
